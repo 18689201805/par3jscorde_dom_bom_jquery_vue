@@ -1,0 +1,64 @@
+﻿iweb Day_05
+========================
+
+
+@ 对应的目录是src
+
+1. 完成名师堂的静态页面
+   1.1 声明名师堂的页面组件
+       src/pages/Teacher.vue
+   1.2 在src/route/routes.js引入并设置路由
+       访问路由  /teacher
+   1.3 展示讲师列表时,使用栅格系统进行布局
+       需要把讲师图片复制到iweb项目中
+       iweb\img-teacher\复制到
+       iweb\iweb_vue\src\assets\images\中
+       最终的图片路径
+       src/assets/images/img-teacher/zx.jpg
+   1.4 将名师堂的路由添加到导航菜单中
+2. 完成名师堂的接口调用
+   2.1 在Vue中配置axios
+       baseURL = "http://127.0.0.1:5050"
+       在src中创建util目录  /src/util/axios.js
+   2.2 在axios.js中配置
+   2.3 在入口文件中引入axios
+   2.4 在nodejs中设置接口的跨域(参考main.js的代码)
+   2.5 在Teacher.vue中调用接口(确保接口系统已启动)
+       接口地址: /teacher/list
+       请求方式: get
+3. 完成"校区"页面
+   3.1 声明校区的组件 src/pages/Address.vue
+   3.2 地图图标的展示(CSS精灵)
+   3.3 在路由文件(routes.js)中引入组件,并声明路由
+       path: '/address',
+       name: 'address',
+       component: Address
+   3.4 在导航条中,添加"校区"的链接
+4. 完成首页的轮播图
+   4.1 声明轮播图的组件src/components/Carousel.vue
+   4.2 通过流式容器包含轮播图
+   4.3 轮播图的效果: 
+https://bootstrap-vue.js.org/docs/components/carousel
+   4.4 在Home组件中引入轮播图组件
+   4.5 将旧项目中的轮播图复制到
+       src/assets/images/目录下
+       src/assets/images/banner01.png
+5. 完成首页的“最新课程”
+   5.1 声明最新课程的组件
+       src/components/HomeCourse.vue
+   5.2 在HomeCourse组件中调用最新课程的接口
+       访问地址  /course/newest
+       请求方式  get
+   5.3 获取到数据后，将结果展示到HomeCourse组件中
+       要求使用栅格系统展示（3:3:3:3）
+       小屏幕下的显示比例是（6:6）
+   5.4 将HomeCourse组件，添加到首页中
+
+总结:
+1. 复习今天的内容
+   1.1 接口的调用(vue中配置axios, 接口的跨域)
+   1.2 Bootstrap组件效果
+       列表(无样式列表,内联列表)
+       轮播图
+       栅格系统
+       响应式图片

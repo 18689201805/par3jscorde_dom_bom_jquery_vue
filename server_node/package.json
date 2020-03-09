@@ -1,0 +1,27 @@
+{
+  "name": "server_node",
+  "version": "1.0.0",
+  "description": "node server V1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/18689201805/par3jscorde_dom_bom_jquery_vue.git"
+  },
+  "keywords": [
+    "1451959778abc"
+  ],
+  "author": "1451959778@qq.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/18689201805/par3jscorde_dom_bom_jquery_vue/issues"
+  },
+  "homepage": "https://github.com/18689201805/par3jscorde_dom_bom_jquery_vue#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
