@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // //var i=indexOf("关键词");indexOf查找固定敏感词问题不支持正则只支持一个或者固定敏感词
+    // //请用户输入一条信息
+    // var msg=prompt("请输入您的信息")
+    // //查找消息中指定的敏感词位置
+    // var reg=msg.indexOf("我草");//没找到返回-1 反之返回不等于-1;
+    // if(reg!=-1){
+    //   //向网页中写入document.write(一行文本或者一行html代码)
+    //   document.write(`<h1 style="color:red">发现敏感词,禁止发送</h1>`)
+    // }else{
+    //   //否则在网页输出:然哥说xxx;
+    //   document.write(`<h1 style="color:blue">然哥说:${msg}</h1`)
+    // }
+
+    // //使用indexOf查找固定敏感词
+    // //用户输入一条信息
+    // var msg=prompt("请输入您的信息");
+    // //查找信息中敏感词的指定位置
+    // var reg=msg.indexOf("微信")
+    // //如果查找到敏感词的位置这在网页输出"发现敏感词,禁止发送""
+    // if(reg != -1){
+    //   document.write(`<h1 style="color:red">发现敏感词禁止发送</h1>`)
+    // }else{
+    //   document.write(`<h1>然哥说${msg}</h1>`)
+    // }
+    // //没查到敏感词在网页输出msg
+    
+
+      //使用search查找敏感词
+      // //用户输入一条信息
+      // var msg=prompt("请输入您的信息")
+      // //查找信息中敏感词的位置
+      // var reg=msg.search(/([我卧喔]|wo)\s*([操草艹曹]|cao)/i)
+      // //如果查到敏感词就在网页上输出发现敏感禁止发送
+      // if(reg !=-1){
+      //   document.write(`<h1 style="color:red">找到敏感词,禁止发送</h1>`)
+      // }else{
+      //   //没查到句输出msg
+      //   document.write(`<h1 style="color:red">meg:${msg}</h1>`)
+      // }
+      
+      // //使用search查找敏感词
+      // //用户输入一条信息
+      // var msg=prompt("亲,请输入您的信息")
+      // //查找输入信息敏感词的指定位置
+      // var reg=msg.search(/([我卧握窝]|wo)\s*([草艹操曹]|cao)/i)
+      // //查到敏感词 就在页面上返回发现敏感词,禁止发送
+      // if(reg!=-1){
+      //   document.write(`<h1 style="color:red">发现敏感词禁止发送</h1>`)
+      // }else{
+      //   document.write(`<h1 style="color:green">msg:${msg}</h1>`)
+      // }
+      
+      //使用match查找敏感词
+      //用户输入一条信息
+      // var input=prompt("请输入您的信息");
+      // //查找信息中指定的敏感词位置以及内容
+      // var msg=input.match(/([微薇喂]|w(ei)?)([信薪新]|x(in)?)/i)
+      // //若找到敏感词返回其位置以及敏感词的内容
+      // if(msg!=null){
+      //   document.write(`<h1 style="color:red">在${msg.index}上发现敏感词${msg[0]}禁止发送</h1>`)
+      // }else{
+      //   //反之反之则返回msg
+      //   document.write(`<h1 style="color:green">然哥说:${input}</h1>`)
+      // }
+
+      //使用match查找敏感词的位置和内容
+      //用户输入一条信息
+      var input=prompt("亲,请输入信息")
+      //查找信息中出现的敏感词的位置和内容
+      var reg=input.match(/([微薇喂]|w(ei)?)\s*([信薪欣]|x(in)?)/i)
+      //找到敏感词就返回敏感词的位置以及内容
+      if(reg!=null){
+        document.write(`<h1 style="color:red">在${reg.index}位置上发现敏感词:${reg[0]},禁止发送</h1>`)
+      }else{
+        document.write(`<h1 style="color:blue">东东说:${input}</h1>`)
+      }
+      //反之返回msg
+  </script>
+</body>
+</html>

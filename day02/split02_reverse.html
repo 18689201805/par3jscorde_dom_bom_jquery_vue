@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //笔试题
+    //先切割字符串之后使用翻转数组,翻转字符串最后通过字符串拼接join实现;
+    //reserve翻转数组函数
+    // var arr=["h","e","l","l","o"];
+    // console.log(arr.reverse());
+
+    // //笔试题
+    // var str="helloworld";
+    // //用split通过空字符进行分割为数组
+    // str=str.split("");
+    // console.log(str);
+    // //使用数组家函数进行翻转reverse
+    // str=str.reverse();
+    // console.log(str);
+    // //将翻转后的数组通过空字符来实现无缝拼接之后得到翻转后的字符串
+    // str=str.join("");
+    // console.log(str);
+
+
+    //翻转webhelloworld
+    var str2="webhelloworld";
+    //将字符串切割为数组
+    str2=str2.split("");
+    //使用数组家函数进行翻转
+    str2=str2.reverse();
+    //使用数组家的函数再次进行无缝拼接成翻转后的字符串
+    str2=str2.join("");
+    console.log(str2);
+  </script>
+</body>
+</html>

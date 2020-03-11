@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // //使用match查找敏感词的位置以及内容
+    // //用户输入一条信息
+    // var input=prompt("请输入一条信息")
+    // //编写正则表达式
+    // var reg=input.match(/([微薇喂]|w(ei)?)\s*([信薪欣]|x(in)?)/i)
+    // //若找到敏感词就返回其位置以及内容
+    // if(reg!=null){
+    //   document.write(`<h1 style="color:red">在${reg.index}位置上发现敏感词:${reg[0]},禁止发送</h1>`)
+    // }else{
+    // //反之则返回input msg
+    //   document.write(`<h1>东东说:${input}</h1>`)
+    // }
+
+    //使用match查找关键词的信息
+    //用户输入一条信息
+    // var input=prompt("请输入内容")
+    // //编写正则表达式
+    // var reg=input.match(/([微薇喂维]|w(ei)?)\s*([信薪欣新]|x(in)?)/i)
+    // //若找到敏感词就返回其内容及位置没找到就返回input msg
+    // if(reg!=null){
+    //   document.write(`<h1>在${reg.index}位置发现敏感词:${reg[0]},禁止发送</h1>`)
+    // }else{
+    //   document.write(`<h1>涛涛说:${input}</h1>`)
+    // }
+
+    //使用match查找敏感词
+    //输入一条信息
+    var input=prompt("请输入您的信息");
+    //编写正则表达式
+    var reg=input.match(/([微薇喂维]|w(ei)?)\s*([信薪欣新]|x(in)?)/i)
+    //若找到敏感词就返回其位置以及位置,没找到就输出input msg
+    if(reg!=null){
+      document.write(`<h1>在${reg.index}位置上发现敏感词:${reg[0]},禁止发送</h1>`)
+    }else{
+      document.write(`<h1>亮亮说:${input}</h1>`)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //删除空格,首尾空格
+    //删除开头空格
+    var str="    chen  shi   sen    "
+    function ltrimleft(str){
+      return str.replace(/^\s+/ig,"");
+    }
+    //删除尾部空格
+   console.log(ltrimleft(str));
+    function ltrimright(str){
+      return str.replace(/\s+$/ig,"");
+    }
+   console.log(ltrimright(str));
+    //首尾同时删除空格
+    function ltrimboth(str){
+      return str.replace(/^\s+|\s+$/ig,"");
+    }
+   console.log(ltrimboth(str));
+
+
+   //新版本浏览器中，已经包含，可直接使用！没试过
+    // console.log(str.trimLeft());
+    // console.log(str.trimRight());
+    // console.log(str.trim());
+  </script>
+</body>
+</html>

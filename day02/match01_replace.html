@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //查找所有带小字的人名  记得查找到所有敏感词不再包含位置 找不到返回null
+    var str="老师说:请用小红造句;小亮:小红,我的朋友;小然:朋友!小红是我的"
+    var reg=str.match(/小[\u4e00-\u9fa5]/ig)
+    console.log(reg);
+
+    //将人名替换为※
+    var msg=str.replace(/小[\u4e00-\u9fa5]/ig,"※※");
+    console.log(msg);
+
+    //共替换多少次三目运算,不能缺少0 尽量多用短路逻辑和三目运算
+    console.log(`共替换${reg!=null?reg.length:0}次`);
+
+    //将首字母改为大写 笔试题
+    var str1="you can you up";
+    var msg1=str1.replace(/\b[a-z]/ig,//回调函数:主函数replace  那个纸条放入主函数,会自动自行即function(){}
+      function(keyword){//每次调用一次,每次只传一个字母并且每次返回一个字母 所有调用了4次回调函数
+        console.log(`调用了一次回调函数keyword=${keyword}, return:${keyword.toLocaleLowerCase()}`)
+        return keyword.toUpperCase();
+      }
+    );
+      document.write(`<h1>${msg1}</h1>`)
+
+    var str2="good good study good good day"
+    var msg2=str2.replace(/\b[a-z]/ig,
+      function(keyword){
+        return keyword.toUpperCase();
+      }
+    )
+    document.write(`<h1 style=color:pink>${msg2}</h1>`)
+  </script>
+</body>
+</html>

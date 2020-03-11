@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="container">
+    <li>85</li>
+    <li>98</li>
+    <li>95</li>
+    <li>78</li>
+    <li>56</li>
+    <li>67</li>
+  </ul>
+  <ul id="score">
+    <li>58</li>
+    <li>74</li>
+    <li>35</li>
+    <li>90</li>
+    <li>80</li>
+  </ul>
+</body>
+<script>
+  //元素的id名会被浏览器自动转为全局变量,直接使用id名就可以直接获得元素对象 做练习时可以不get xxx();
+
+  // //获取container的HTML内容
+  // var html=container.innerHTML;
+  // //删除开头的空字符以及<li>并提换成""
+  // html=html.replace(/^\s*<li>/,"");
+  // //删除结尾的空字符以及</li>并换成"";
+  // html=html.replace(/<\/li>\s*$/,"");
+  // //通过split分割</li><li>  
+  // var arr=html.split(/<\/li>\s*<li>/);
+  //   console.log(arr);
+
+  //获取html页面id为score的元素内容,并组成数组;
+  //1.1获取html score的内容
+  var html1=score.innerHTML;
+  //1.2编写正则将开头的<li>以及空字符替换为"";
+  html1=html1.replace(/^\s*<li>/,"")
+  //1.3编写正则将结尾的</li>以及空字符替换为""
+  html1=html1.replace(/<\/li>\s*$/,"");
+  //1.4编写正则切割函数对</li><li>进行切割
+  var msg2=html1.split(/<\/li>\s*<li>/);
+    console.log(msg2)
+    
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //若正则表达式是固定的并不会发生改变的可用"//"创建正则表达式
+
+    //若从服务器端传回的数据要动态生成正则表达式则不能用 "//"创建正则,因为 "//"不能写js表达式,但可以创建正则对象来创建正则表达式这才是正则的本质,"//"为正则的缩写方式
+    //new RegExp("正则写js表达式",ig)
+    //example:
+    //从服务器请求回来的一组敏感词数组
+    // var arry=["明月","晴天","翠柳"];
+    // var input=prompt("请输入您的信息");
+    // var reg=input.match(new RegExp(arry.join("|")))
+    // if(reg!=null){
+    //   document.write(`<h1 style="color:red">在${reg.index}的位置发现敏感词:${reg[0]},禁止发送</h1>`)
+    // }else{
+    //   document.write(`<h1>${input}</h1>`)
+    // }
+
+      //从服务器请求回来的一组敏感词数组,动态实现拦截敏感词
+      var arry=["我草","微信","钉钉","滴滴"]
+      //用户输入一条信息
+      var input=prompt("请输入一条信息");
+      //编写正则表达式 查找指定位置的敏感词
+      var reg=input.match(new RegExp(arry.join("|")))//"|"正则或
+      //若找到敏感词则返回其位置以及内容
+      if(reg!=null){
+        document.write(`<h1 style="color:red">在${reg.index}位置发现敏感词:${reg[0]},禁止发送</h1>`);
+      }else{
+        document.write(`<h1>${input}</h1>`)
+      }
+      //反之则输出msg
+
+  </script>
+</body>
+</html>
