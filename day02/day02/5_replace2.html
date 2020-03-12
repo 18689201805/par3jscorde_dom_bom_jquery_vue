@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//想把每个单词首字母改为大写
+var str="you can you up";
+str=str.replace(/\b[a-z]/ig,function(keyword){
+  console.log(`调用了一次回调函数,本次获得关键词:keyword=${keyword},返回新值:${keyword.toUpperCase()}`)
+  //keyword依次接受: y c y u
+  return keyword.toUpperCase()
+});
+console.log(str); //You Can You Up
+</script>
+</body>
+</html>

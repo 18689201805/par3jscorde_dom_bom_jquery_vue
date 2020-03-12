@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   //var str="老师: 请用小红 我的 朋友造句。小亮:小红是我的朋友。小然: 朋友！小红是我的！"
+  // var reg= /小[\u4e00-\u9fa5]/g;
+  // var str=reg.exec(str)
+  //  if(str!=null){
+  //   console.log(`在位置${str.index},找到敏感词${str[0]}`);
+  //  }else{
+  //   console.log(`${str}`);
+  //  }
+
+  // var str1="老师: 请用小红 我的 朋友造句。小亮:小红是我的朋友。小然: 朋友！小红是我的！"
+  // var reg=/小[\u4e00-\u9fa5]/g
+  // do{
+  // var arr=reg.exec(str1);
+  //  if(arr!=null){
+  //   console.log(`在位置${arr.index},找到敏感词${arr[0]}`);
+  //  }else{
+  //   break;
+  //  }
+  // }while(true)
+
+
+//   //使用exec函数查找所有敏感词及其位置
+//   //创建str的信息
+//   var str="老师: 请用小红 我的 朋友造句。小亮:小红是我的朋友。小然: 朋友！小红是我的！"
+//   //创建正则表达式
+//   var reg=/小[\u4e00-\u9fa5]/g;
+//   //使用循环查找所有指定的敏感词以及位置
+//   do{
+//     var arry=reg.exec(str);
+//     //找到则返回位置及其内容
+//     if(arry!=null){
+//       console.log(`在${arry.index}发现敏感词:${arry[0]}`)
+//     }else{
+//       break;
+//       //没找到句退出循环
+//     }
+  
+// }while(true)
+
+//使用exec查找所有敏感词并返回其位置
+//声明变量str的信息
+var str="老师: 请用小红 我的 朋友造句。小亮:小红是我的朋友。小然: 朋友！小红是我的！"
+//编写正则表达式 查找带小字的人名
+var reg=/小[\u4e00-\u9fa5]/g
+//使用do{}while()循环 找到敏感词在页面显示敏感词及其位置 没找到退出循环
+do{
+  var arry=reg.exec(str);
+  if(arry!=null){
+    document.write(`<h5>在${arry.index}位置上发现人名:${arry[0]}</h5>`)
+  }else{
+    break;
+  }
+}while(true)
+  </script>
+</body>
+</html> 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//希望定义三个函数: 
+//第一个函数可以只去掉字符串开头的空字符
+function ltrim(str){
+  console.log("调用自己的ltrim");
+  return str.replace(/^\s+/,"");
+}
+//第二个函数可以只去掉字符串结尾的空字符
+function rtrim(str){
+  console.log("调用自己的rtrim");
+  return str.replace(/\s+$/,"")
+}
+//第三个函数可以同时去掉字符串开头和结尾的空字符
+function trim(str){
+  console.log("调用自己的trim");
+  return str.replace(/^\s+|\s+$/g,"");
+}
+
+var str="   zhang  dong   ";
+console.log(ltrim(str));
+console.log(rtrim(str));
+console.log(trim(str));
+
+//其实ES6/ES7标准已经提供了trim等一系列去空格的函数
+console.log(str.trimLeft());
+console.log(str.trimRight());
+console.log(str.trim());
+</script>
+</body>
+</html>

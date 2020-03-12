@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var arr=[ 1,2,3 ];
+var ym=[];
+ym["数学"]=89;
+ym["语文"]=69;
+ym["英语"]=91;
+console.log(arr);
+console.log(ym);
+console.log(arr["0"], arr[0]);
+//             1         1
+console.log(ym["数学"], ym.数学);
+//               89      89
+console.log(arr["length"],arr.length);
+//                3            3
+console.log(ym["length"],ym.length);
+//                0          0   
+//因为length只统计数字下标的个数
+</script>
+</body>
+</html>

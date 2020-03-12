@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var arr=[1,2,3];
+arr.reverse();
+console.log(arr);
+
+var str="helloworld";
+//鄙视题: 翻转字符串:
+//先将字符串打散为字符数组: 
+var arr=str.split("");
+//[h,e,l,l,o,w,o,r,l,d]; 
+arr.reverse();
+console.log(arr);
+//[d,l,r,o,w,o,l,l,e,h]
+str=arr.join("");//"dlrowolleh"
+console.log(str);//"dlrowolleh"
+</script>
+</body>
+</html>
