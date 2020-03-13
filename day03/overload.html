@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //overload重载 做同一件事不同的方式时避免创建多个函数增加程序员的压力
+    //每个函数都存在一个类数组对象 像数组但不能使用数组家函数 唯一相同的是有length属性
+    //可以解决以上的问题;
+    //定义一个付款函数 支持手机支付 现金支付 刷卡支付
+    function pay(){
+      //当arguments长度为0的时候是手机支付
+      if(arguments.length==0){
+        console.log("手机支付.....")
+        //当arguments长度为1是现金支付
+      }else if(arguments.length==1){
+        console.log(`您已支付${arguments[0]},支付成功`)
+      }else{//否则是刷卡支付
+        console.log(`你的卡号${arguments[0]},已消费:${arguments[1]}元`)
+      }
+    }
+    //手机支付
+    pay();
+    //现金支付
+    pay(68.89);
+    //刷卡支付
+    pay(8956,120);
+  </script>
+</body>
+</html>

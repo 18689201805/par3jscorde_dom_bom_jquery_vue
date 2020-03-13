@@ -39,9 +39,9 @@
   //1.1获取html score的内容
   var html1=score.innerHTML;
   //1.2编写正则将开头的<li>以及空字符替换为"";
-  html1=html1.replace(/^\s*<li>/,"")
+  html1=html1.replace(/^\s*<li>|<\/li>\s*$/ig,"")
   //1.3编写正则将结尾的</li>以及空字符替换为""
-  html1=html1.replace(/<\/li>\s*$/,"");
+  //html1=html1.replace(/<\/li>\s*$/,"");
   //1.4编写正则切割函数对</li><li>进行切割
   var msg2=html1.split(/<\/li>\s*<li>/);
     console.log(msg2)

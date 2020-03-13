@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    //"no".repeat(3) 返回的是3个no no no
+    //将信息中的公安局 公共安全 公安 替换成*
+    var str="公安局负责维护公共安全，有困难找公安"
+    //编写正则表达式 查找所有指定敏感词的内容并替换*
+    var str=str.replace(/公安局?|公共安全/ig,
+    //编写回调函数进行敏感词替换
+    function(keyword){
+      return "*".repeat(keyword.length);
+    })
+    console.log(str)
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //获取协议 域名 路径 切割字符串
+    // var url="http://localhost:5500/public/index.html?lid=5#top"
+    // var arr=url.split("://");
+    // var protocol=arr[0];
+    // var rest=arr[1];
+    // var arr=rest.split("#")
+    // var hash=`#${arr[1]}`;
+    // rest=arr[0];
+    // var arr=rest.split("?");
+    // var search=arr[1];
+    // rest=arr[0];
+    // var arr=rest.split("/")
+    // var host=arr.shift();
+    // var pathname="/"+arr.join("/");
+    // var arr=host.split(":")
+    // var hostname=arr[0];
+    // var port=arr[1];
+    // console.log(protocol)
+    // console.log(host)
+    // console.log(hostname)
+    // console.log(port)
+    // console.log(pathname)
+    // console.log(search)
+    // console.log(hash)
+    
+
+    // var url1="http://localhost:5500/public/index.html?uname=dingding&upwd=123456#top"
+    // var reg=/([a-z]+):\/\/([a-zA-Z0-9.]+):(\d+)((\/[a-z.]+)+)\?(([a-z]+=[a-z0-9]+&?)+)(#[a-z]+)/i
+    // var arr=url1.match(reg);
+    // var protocol=arr[1];
+    // var host=arr[2]+":"+arr[3];
+    // var hostname=arr[2];
+    // var port=arr[3];
+    // var pathname=arr[4];
+    // var search=arr[6];
+    // var hash=arr[8];
+    // console.log(protocol)
+    // console.log(host)
+    // console.log(hostname)
+    // console.log(port)
+    // console.log(pathname)
+    // console.log(search)
+    // console.log(hash)
+
+    var url1="http://localhost:5500/public/index.html?uname=dingding&upwd=123456#top"
+    // var reg=/([a-z]+(?=:\/\/))|((?<=:\/\/)[a-z0-9.]+(?=:))|((?<=:)\d+(?=\/))|(\/[a-z/.]+(?=\?))|((?<=\?)[a-z0-9=&]+(?=#))|(#[a-z0-9]+)/ig;
+    
+    var reg=/([a-z]+(?=:\/\/))|((?<=:\/\/)[a-z0-9.]+(?=:))|((?<=:)[0-9]+(?=\/))|(\/[a-z/.]+(?=\?))|((?<=\?)[a-z0-9&]+(?=#))|(#[0-9a-z]+)/ig
+    
+    var arr=url1.match(reg);
+    for(var i=0;i<arr.length;i++){
+      console.log(arr[i])
+    }
+    console.log(arr)
+
+  </script>
+</body>
+</html>
