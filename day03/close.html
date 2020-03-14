@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //闭包笔试题 定义一个取号机;
+    //用外层函数包裹着要保护的变量,和使用变量的内层函数
+    //function的本质是new Function  会在内存重新划分一块区域给function
+    //每个函数在调用是都会创建临时函数作用域对象(临时作用域对象会吧函数体内的局部变量临时保存着)
+    //因为返回的内层函数还在引用这外层函数的作用域对象,无发释放,从而形成了闭包
+    //内层函数会有至少三个好友类别即 预留 >先找 父母的作用域(即局部变量) >再找 Windows
+    //先局部后全局
+    function parent(){
+      var i=0;
+      return function(){
+        i++;
+        console.log(i);
+      }
+    }
+    var num=parent();
+    num();
+    num();
+    num();
+    num();
+  </script>
+</body>
+</html>

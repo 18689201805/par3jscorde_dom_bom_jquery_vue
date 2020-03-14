@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var arr=[12,23,123,32,2,3,1];
+//arr.sort();//默认将每个元素都转为字符串，按字符串中字符编码的大小来排序，按位比较每个字符的unicode号。
+//不好的做法: 用有名称的函数，在arr.sort()调用后，依然占用内存，无法释放。所以，浪费内存
+// var fun=function(a,b){return a-b}
+// arr.sort(fun);
+//好的做法: 没有名称的函数在arr.sort()调动后，就一起被垃圾回收了！节约内存!
+arr.sort(function(a,b){return a-b});
+//arr.sort(function(a,b){
+  //console.log(a,b,"比较")
+  //return a-b
+//});
+console.log(arr);
+</script>
+</body>
+</html>

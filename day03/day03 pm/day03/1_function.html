@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//想定义一个函数可以做饭
+function cook(dan,cai,mian){
+  console.log(`炒${dan}`);
+  console.log(`炒${cai}`);
+  console.log(`${cai}和${dan}一起炒`);
+  console.log(`煮${mian}`);
+  console.log(`将炒好的${cai}${dan}和煮好的${mian}搅拌在一起`)
+  return `一碗热腾腾香喷喷的${cai}${dan}${mian}`
+}
+//星期一想吃西红柿鸡蛋面:
+var wan=cook("鸡蛋","西红柿","面条");
+console.log(`吃 ${wan}`);
+//星期二没西红柿了！只有黄瓜！
+var wan=cook("鸡蛋","黄瓜","面条");
+console.log(`吃 ${wan}`);
+//星期三没有鸡蛋了，只有辣条!
+var wan=cook("辣条","黄瓜","面条");
+console.log(`吃 ${wan}`);
+</script>
+</body>
+</html>

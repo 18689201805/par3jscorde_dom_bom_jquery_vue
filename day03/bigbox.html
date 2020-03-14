@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function parent(){
+      var total=1000;
+      return function(money){
+        //total=total-money;
+        //等于
+        total-=money;
+        console.log(`花了${money},还剩${total}`)
+      }
+    }
+    var pay= parent();
+    //pay:调用parent()之后pay接收的是return出来的函数function(money){}
+    pay(100);
+    pay(100);
+    pay(100);
+    pay(100);
+  </script>
+</body>
+</html>

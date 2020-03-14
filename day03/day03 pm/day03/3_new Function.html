@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var a=function(){console.log(1)};
+    //new Function() 地址: 0x1234
+var b=function(){console.log(1)}; 
+    //new Function() 地址: 0x9091
+console.log(a==b); //false
+//     0x1234==0x9091
+</script>
+</body>
+</html>
