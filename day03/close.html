@@ -14,18 +14,47 @@
     //因为返回的内层函数还在引用这外层函数的作用域对象,无发释放,从而形成了闭包
     //内层函数会有至少三个好友类别即 预留 >先找 父母的作用域(即局部变量) >再找 Windows
     //先局部后全局
-    function parent(){
-      var i=0;
-      return function(){
-        i++;
-        console.log(i);
-      }
-    }
-    var num=parent();
-    num();
-    num();
-    num();
-    num();
+
+ //   function parent(){
+  //    var i=0;
+  //    return function(){
+  //      i++;
+  //      console.log(i);
+ //     }
+ //   }
+  //  var num=parent();
+  //  num();
+  //  num();
+  //  num();
+  //  num();
+
+//与下面的写法效果一样
+
+var num=(
+	function()
+	{
+		var i=0;
+		return function(){
+		i++;
+		console.log(i)
+		}
+	}
+	)()
+	 num();
+	 num();
+	 num();
+	 num();
+	 num();
+
+ var pay1=(function(){
+    			var total=1000;
+    			return function(money){
+            		total-=money;
+            		console.log(`本次花了${money}元，还剩${total}元`)
+          		}
+  			})();
+ 
+  			pay1(100);
   </script>
 </body>
 </html>

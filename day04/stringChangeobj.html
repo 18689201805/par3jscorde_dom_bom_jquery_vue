@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //地址栏的字符串转为对象类型
+    var search="?uname=dingding&upwd=123456&favs=swimming&favs=running&favs=basketball";
+    function search2Obj(str){
+      //创建新对象;
+      var obj={}
+      //去掉str开头的?
+      str=str.slice(1);
+      //按&的切割
+      var arr=str.split("&");
+      //遍历数组for 
+      for(var s of arr){
+        var [key,value]=s.split("=");//解构下标相对应;
+        //如果obj不包含key下标的属性
+        if(obj[key]==undefined){
+          obj[key]=value;
+
+        }else{
+          //拼接完之后要用变量接住放回对象中
+          //前面是旧值,value为新值
+          obj[key]=[].concat(obj[key],value);
+        }
+      }
+      return obj;
+
+    }
+    var obj= search2Obj (search);
+    console.log(obj);
+  </script>
+</body>
+</html>

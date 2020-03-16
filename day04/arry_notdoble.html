@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //数组去重
+    var arry=[1,2,3,5,6,7,8,9,1,4,6,3,7,6,8];
+    var hash={};//一个对象不允许有重复的下标 所以用for循环遍历数组的值转变为对象的属性时不允许有相同的属性,出现相同就会替换;
+    for(var i=0;i<arry.length;i++){
+      hash[arry[i]]=1;//将数组的值变成对象的属性
+    }
+    var res=[];
+    var i=0;
+    for(res[i++] in hash);//遍历属性将属性重新放入一个数组中
+    console.log(res);
+  </script>
+</body>
+</html>

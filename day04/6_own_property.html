@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//构造函数 妈妈
+function Student(sname,sage){
+  this.sname=sname;
+  this.sage=sage;
+}
+//为两个孩子添加共有属性className
+Student.prototype.className="初一2班"; //共有
+//两个孩子
+var lilei=new Student("Li Lei",11);
+var hmm=new Student("Han Meimei",12);
+var lily=new Student("Lily",10);
+console.log(lilei);
+console.log(hmm);
+console.log(lily);
+//输出三个孩子的班级
+console.log(lilei.className,hmm.className,lily.className);
+//输出三个孩子的自有属性sname
+console.log(lilei.sname,hmm.sname,lily.sname);
+//过了一年，三个孩子都升了一级
+//正确: 
+//Student.prototype.className="初二2班";
+//输出三个孩子的班级
+//console.log(lilei.className,hmm.className,lily.className);
+//错误: 
+lilei.className="六年级2班";
+//输出三个孩子的班级
+console.log(lilei.className,hmm.className,lily.className);
+//后果: 
+//过了一年，孩子们应该都升一级
+Student.prototype.className="初二2班";
+//输出三个孩子的班级
+console.log(lilei.className,hmm.className,lily.className);
+</script>
+</body>
+</html>

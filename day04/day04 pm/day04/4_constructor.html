@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//先创建一个学生对象保存李磊的属性和功能
+//又要创建一个学生对象保存韩梅梅的属性和功能
+//因为李磊和韩梅梅都是学生（Student）类型的对象，所以属性结构和方法定义完全相同
+//所以应该用构造函数来定义
+function Student(sname,sage){
+  this.sname=sname;
+  this.sage=sage;
+  this.intr=function(){
+    console.log(`I'm ${this.sname},I'm ${this.sage}`)
+  }
+}
+//用new调用构造函数创建lilei对象
+var lilei=new Student("Li Lei",11);
+//用new调用构造函数创建hmm对象
+var hmm=new Student("Han Meimei",12);
+console.log(lilei);
+console.log(hmm);
+</script>
+</body>
+</html>

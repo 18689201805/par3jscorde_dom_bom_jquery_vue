@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var lilei={
+      name:"lilei",
+      sage:19,
+      intr(){
+        console.log(`我叫:${this.name},今年:${this.sage}岁`)
+      }
+    }
+    //获取李磊的年龄
+    console.log(lilei.sage);
+    //请李磊自我介绍
+    lilei.intr();
+    //李磊过了一年涨了一岁
+    lilei.sage++;
+    console.log(lilei.sage);
+  </script>
+</body>
+</html>

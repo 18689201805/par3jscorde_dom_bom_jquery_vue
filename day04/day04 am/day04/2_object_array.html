@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var lilei={
+  sname:"Li Lei",
+  sage: 11
+}
+console.log(lilei);
+//想获取李磊的年龄
+console.log(lilei["sage"]);
+//尝试为李磊强行添加一个新属性
+lilei.className="初一2班";
+//试图访问李磊的爱好
+console.log(lilei.fav);//undefined
+//遍历lilei中每个成员
+for(var key in lilei){
+  //每一轮都在变化: sname  sage   intr    className
+  console.log(`${key} : ${lilei[key]}`)
+//console.log(`${key} : ${lilei["key"]}`) //变量不能加""
+//console.log(`${key} : ${lilei.key}`)
+//                             .key会被自动翻译为["key"]
+}
+
+var ym=[];
+ym["math"]=89;
+ym.chs=69;
+ym["eng"]=91;
+console.log(ym);
+//试图访问杨幂的className
+console.log(ym["className"])//undefined
+//强行为ym添加一个新属性，爱好:跑步
+ym.fav="跑步";
+//遍历ym中每个成员
+for(var key in ym){
+  //in 依次取出对象中每个属性名,将属性名保存到in前的变量中
+  //变量key每次循环会依次得到: math  chs  eng   fav
+  //又因为对象或关联数组中的属性名，有一个技术学名叫"键"
+  //属性值，简称为值
+  //所以有人也称对象和关联数组为"键值对儿"的集合
+  //而键英文就是key
+  //所以key可以用来表示属性名
+  console.log(`${key} : ${ym[key]}`)
+}
+</script>
+</body>
+</html>

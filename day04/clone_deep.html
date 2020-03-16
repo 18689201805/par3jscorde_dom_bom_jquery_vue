@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //深克隆
+    function clone(oldobj){
+      if(oldobj==null){return null};
+      if(typeof oldobj!=="object"){return oldobj};
+      var newobj= Array.isArray(oldobj)?[]:{}
+      for(var key in oldobj){
+        newobj[key]=clone(oldobj[key]);
+      }
+      return newobj;
+    }
+    var lilei={
+    sname:"Li Lei",
+    sage:11,
+    address:{
+      city:"北京",
+      street:"万寿路"
+    }
+    }
+    var lilei2=clone(lilei);
+    lilei2.address.city="广东";
+    lilei2.money=100;
+    console.log(lilei);
+    console.log(lilei2);
+    console.log(lilei==lilei2);//false
+  </script>
+</body>
+</html>

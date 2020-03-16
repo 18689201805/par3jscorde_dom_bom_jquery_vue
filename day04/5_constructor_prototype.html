@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Student(sname,sage){
+        this.sname=sname,
+        this.sage=sage
+        // this.intr=function(){
+        //   console.log(`我叫${this.sname},今年${this.sage}岁`)
+        //}
+    }
+    //继承,构造函数的方法应该写在原型对象中即在继承下添加方法
+    //向所有孩子共同的父对象原型对象中添加一个公共的intr函数,让所有孩子共用
+    Student.prototype.intr=function(){
+      console.log(`我叫${this.sname},今年${this.sage}岁`)//this指向调用.前的函数变量
+    }
+
+    //两个孩子
+    var  lilei=new Student("lilei",12);
+    var hanmeimei=new Student("hanmeimei",10);
+    
+    console.log(lilei);
+    console.log(hanmeimei);
+    //判断this,不要定义在哪儿,只看在哪里调用ex:lilei, hanmeimei调用时this句指向他们
+    lilei.intr();
+    hanmeimei.intr();
+    //亲子鉴定
+    //lilei的爹是不是student的老公
+    console.log(lilei.__proto__==Student.prototype)//true
+    //lilei和hanmeiemi的爹是不是同一个人;
+    console.log(lilei.__proto__==hanmeimei.__proto__)//true;
+
+//自有属性和共有属性的修改
+Student.prototype.className="初一二班"//为共有属性
+var lilei=new Student("lilei",11);
+var hanmeimei=new Student("han meimei",12);
+var lily=new Student("lily",10);
+console.log(lilei);
+console.log(hanmeimei);
+console.log(lily);
+//错误:修改共用属性 
+//lilei.className="六年级2班";
+//会导致在对象中添加了一个自有属性className,在程序执行时会以就近原则执行不会再找父级的共有属性,那李磊的className就会跟继承毫无关系
+//过了一年，三个孩子都升了一级
+//正确: 
+Student.prototype.className="初二2班";
+//输出孩子的共有属性
+console.log(lilei.className,hanmeimei.className,lily.className)
+//输出孩子的自有属性
+console.log(lilei.sname,hanmeimei.sname,lily.sname);
+  </script>
+</body>
+</html>

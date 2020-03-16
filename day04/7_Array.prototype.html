@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    //向数组的原型对象中添加一个sum函数
+    Array.prototype.sum=function(){
+      console.log(`调用我们自己在Array.prototype中定义的sum函数`);
+      var total=0;
+      for(var i=0;i<this.length;i++){
+        total+=this[i]
+      }
+      return total;
+    }
+  </script>
+</head>
+<body>
+<script>
+//希望任意一个数组调用sum()函数，就可求和； 
+var arr1=[1,2,3];
+console.log(arr1.sum());//6
+var arr2=[1,2,3,4,5];
+console.log(arr2.sum());//15
+</script>
+</body>
+</html>

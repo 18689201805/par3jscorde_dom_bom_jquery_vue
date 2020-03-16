@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var lilei={
+  sname:"Li Lei",
+  sage:11
+}
+//定义一个函数，接受一个旧对象，克隆出一个一模一样的新对象
+function clone(oldObj){
+  //1. 先创建一个新的空对象，准备接收旧对象中的属性和属性值
+  var newObj={};//=new Object()
+  //2. 遍历旧对象中每个属性和属性值
+  for(var key in oldObj){
+    //3. 每遍历旧对象中一个属性，就为新对象强行赋值添加一个同名的新属性，属性值也等于旧对象中当前同名属性的值
+    newObj[key]=oldObj[key];
+  }
+  //4. 克隆完毕，返回新对象
+  return newObj;
+}
+var lilei2=clone(lilei);
+console.log(lilei);
+console.log(lilei2);
+console.log(lilei==lilei2);
+//lilei2挣了100块钱
+lilei2.money=100;
+console.log(lilei.money);
+console.log(lilei2.money);
+</script>
+</body>
+</html>

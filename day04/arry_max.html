@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //查找字符出现最多的一个
+    var str="halloworld"
+    var arr=[];
+    for(var i=0;i<str.length;i++){
+      var char=str[i];
+      if(arr[char]===undefined){
+        arr[char]=1;
+      }else{
+        arr[char]++;
+      }
+    }
+    console.log(arr);
+    var maxChar,count=0;
+    //遍历关联arr
+    for(var key in arr){
+      if(arr[key]>count){ //arr[key]访问关联数组下标即字母的每一个值
+        maxChar=key;
+        count=arr[key];
+      }
+    }
+    console.log(`出现最多次数的字母是:${maxChar},共出现了${count}次`)
+  </script>
+</body>
+</html>

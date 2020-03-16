@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//构造函数 妈妈
+function Student(sname,sage){
+  this.sname=sname;
+  this.sage=sage;
+  /*从此构造函数中不应该再有方法定义了！*/
+}
+console.dir(Student);
+//输出定义构造函数时附赠的原型对象爸爸
+console.log(Student.prototype);
+//想向所有孩子共同的父对象原型对象中添加一个公共的intr函数，让所有孩子公共
+Student.prototype.intr=function(){
+  console.log(`I'm ${this.sname},I'm ${this.sage}`)
+}
+//两个孩子
+var lilei=new Student("Li Lei",11);
+var hmm=new Student("Han Meimei",12);
+console.log(lilei);
+console.log(hmm);
+//判断this,不要看定义在哪儿！只看在哪儿调用！
+lilei.intr();
+hmm.intr();
+//亲子鉴定: 
+//lilei的爹是不是Student的老公？
+console.log(lilei.__proto__==Student.prototype);//true
+//lilei和hmm的爹是不是同一个人？
+console.log(lilei.__proto__==hmm.__proto__);//true
+</script>
+</body>
+</html>
