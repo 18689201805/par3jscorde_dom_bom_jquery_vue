@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    function Student(sname,sage){
+      this.sname=sname;
+      this.name=sage;
+    }
+    var father={
+      bal:100000000000,
+      car:"infiniti"
+    }
+    Student.prototype=father;
+    
+    var lilei=new Student("li lei",12);
+    var hmm=new Student("hanmeimei",10);
+    console.log(lilei);
+    console.log(hmm);
+    // var father={
+    //   bal:100000000000,
+    //   car:"infiniti"
+    // }
+    
+   // Object.setPrototypeOf(hmm,father);
+
+    console.log(lilei.bal, lilei.car);
+    console.log(hmm.bal, hmm.car);
+  </script>
+</body>
+</html>

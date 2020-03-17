@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //多态
+    //继承顶级对象原型对象toString;
+    function Student(sname,sage){
+      this.sname=sname;
+      this.sage=sage;
+    }
+    Student.prototype.toString=function(){
+      return `{ sname: "${this.sname}", sage:${this.sage} }`
+    }
+    var lilei=new Student("li lei",11);
+    var arr=[1,2,3,4,5];
+    console.log(lilei.toString());//[object,object]  //如何避免修改重写原型对象toString 为构造函数的原型对象添加方法toString() 若没有重写则会自动继承顶级的原型对象即爷爷,之后就会打印[object,object]
+    console.log(arr.toString());//1,2,3,4,5字符串 数组可以直接继承顶级的原型对象toString 之后会将数组转为字符串
+  </script>
+</body>
+</html>

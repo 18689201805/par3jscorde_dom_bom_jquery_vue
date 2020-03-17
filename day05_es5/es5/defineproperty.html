@@ -1,0 +1,65 @@
+|<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict"
+    var eric={
+      eid:1001,//eid:只读
+      ename:"埃里克",//禁止删除ename属性
+      salary:12000//禁止用for in 随便遍历
+    }
+    //故意修改
+   // eric.eid=12;
+    //故意删除ename;
+    //delete eric.ename; 
+    //尝试遍历salary
+   // for(var key in eric){
+   //   console.log(`key:${key},value:${eric[key]}`)
+   // }
+  
+  
+   //尝试输出eric对象的eid属性的小对象
+   var obj=Object.getOwnPropertyDescriptor(eric,"eid");
+  // Object.defineProperty(eric,"eid",{
+     //value:1232,//属性值可修改;
+   //  writable:false, //true 可以修改/false不能修改
+   //  enumerable:false,//禁止遍历属性值
+   //  configurable:false //false不能删除 // 一旦关上,之后不可逆即不能修改为true
+  // })
+   //eric.eid=1245;//因为writable为false不呢修改属性值
+ 
+  //  Object.defineProperty(eric,"eid",{
+  //    writable:true,//因为之前configurable为false,之后就不能修改属性为true 
+  //    configurable:true //因为之前configurable为false 不可逆
+  //  })
+
+    Object.defineProperties(eric,{
+      eid:{
+        writable:false,
+        configurable:false
+      },
+      ename:{
+        configurable:false
+      },
+      salary:{
+        enumerable:false
+      }
+    })
+  //eric.eid=1245;//因为writable为false不呢修改属性值
+ 
+  // //  Object.defineProperty(eric,"eid",{
+  // //    writable:true,//因为之前configurable为false,之后就不能修改属性为true 
+  // //    configurable:true //因为之前configurable为false 不可逆
+  // //  })
+  //   for(var key in eric){
+  //   console.log(`${key} : ${eric[key]}`)
+  //   }
+    console.log(eric)
+  </script>
+</body>
+</html>

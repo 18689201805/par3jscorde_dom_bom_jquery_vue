@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var eric={
+  eid:1001,
+  ename: "埃里克",
+  eage: 25 //年龄虽然可以修改，但是必须介于18~65岁直接
+}
+//value不负责保护，仅负责保存属性值
+//writable: 禁止修改，但是年龄可以修改，只不过值的范围人为规定而已
+//enumerable: 跟值无关，是用来防止for in遍历的
+//configurable: 跟值无关，是用来防止删除属性
+//使用访问器属性: 
+//新增一个隐姓埋名的半隐藏的实际保存属性值的属性
+Object.defineProperty(eric,"_eage",{
+  value:eric.eage,
+  writable:true,//收保护的属性值可以修改，只不过要经过验证才能修改
+  enumerable:false,
+  configurable:false
+})
+//为受保护的属性请保镖，保镖要冒名顶替受保护的属性
+Object.defineProperty(eric,"eage",{
+  //没有value，writable
+  get:function(){
+    console.log(`自动调用eage的get(),返回${this._eage}`);
+    return this._eage;
+  },
+  set:function(value){
+    console.log(`自动调用eage的set(),并收到value=${value}进行验证`)
+    if(value>=18&&value<=65){
+      this._eage=value;
+    }else{
+      throw Error("年龄必须介于18~65之间")
+    }
+  },
+  enumerable:true,
+  configurable:false
+})
+
+//外人试图获取eage的属性值
+console.log(eric.eage); //自动调用eage的get()
+//外人试图修改eage的属性值
+eric.eage=26;
+console.log(eric);
+eric.eage=15;
+</script>
+</body>
+</html>

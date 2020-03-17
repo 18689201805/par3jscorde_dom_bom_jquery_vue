@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+function fib(n){
+  if(n<3){
+    return 1;
+  }else{
+    //准备三个杯子
+    var f1=1, f2=1, fn;
+    //反复执行相同的操作(不是从第一个月开始循环，而是从第三月开始计算)
+    for(var i=3;i<=n;i++){
+      //每次先将f1的值和f2的值相加,放入fn中
+      fn=f1+f2;
+      //为下一轮循环做准备: 
+      f1=f2;//等号赋值是从右向左倒水
+      //将f2的值给f1，再将fn的值给f2
+      f2=fn;
+    }
+    //循环结束，fn变量中的值，就是对应月份的值
+    return fn;
+  }
+}
+console.log(fib(1000));//55
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+function Student(sname, sage){
+  this.sname=sname;
+  this.sage=sage;
+}
+var lilei=new Student("Li Lei",18);
+var hmm=new Student("Han Meimei",19);
+console.log(lilei);
+console.log(hmm);
+//新的父对象
+var father={
+  bal:10000000000000,
+  car:"infiniti"
+}
+//hmm想继承新的父对象，从而使用新父对象中自己想要的成员
+//hmm.__proto__=father;
+Object.setPrototypeOf(hmm,father)
+
+console.log(lilei.bal, lilei.car);
+console.log(hmm.bal, hmm.car);
+</script>
+</body>
+</html>

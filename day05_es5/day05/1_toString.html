@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+function Student(sname,sage){
+  this.sname=sname;
+  this.sage=sage;
+}
+//为学生家所有孩子重写toString()方法,覆盖父类型Object中不好用的toString()
+Student.prototype.toString=function(){
+  console.log(`调用父对象Student的原型对象中重写的toString()方法`)
+  return `{ sname: "${this.sname}", sage:${this.sage} }`
+}
+var lilei=new Student("Li Lei",11);
+
+var arr=[1,2,3,4,5];
+
+var hmm={ 
+  sname: "Han Meimei", 
+  sage: 12,
+  //为hmm自己重写toString()方法,覆盖父类型Object中不好用的toString()
+  toString:function(){
+    console.log(`调用当前对象自己内部重写的toString()方法`)
+    return `{ sname: "${this.sname}", sage:${this.sage} }`
+  }
+};
+
+var now=new Date();
+
+console.log(lilei.toString());//"[object Object]"
+console.log(arr.toString());//"1,2,3,4,5"
+console.log(hmm.toString());//"[object Object]"
+console.log(now.toString());//Mon Mar 16 2020 10:07:08 GMT+0800
+</script>
+</body>
+</html>

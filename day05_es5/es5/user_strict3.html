@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict"//严格模式下
+    function Student(sname,sage){
+      this.sname=sname;
+      this.sage=sage;
+    }
+    var lilei=new Student("lilei",13);
+    var hmm=Student("han meimei",10);//严格模式会报错 this指向的Windows 将属性都在Windows对象中显示,内存泄漏
+    //var hmm=Student("han meimei",10);//不是严格模式打印undefined this指向的Windows
+    console.log(lilei)
+    console.log(hmm)
+  </script>
+</body>
+</html>

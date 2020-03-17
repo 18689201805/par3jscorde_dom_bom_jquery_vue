@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+"use strict";
+
+var eric={ //公司要求
+  eid:1001, //eid只读
+  ename:"埃里克", //禁止删除ename属性
+  salary: 12000 //禁止用for in随便遍历
+}
+//尝试输出eric对象的eid属性的小对象
+var obj=Object.getOwnPropertyDescriptor(eric,"eid");
+//           获得 自己的属性的描述信息
+console.log(obj);
+//想让eid只读: 
+Object.defineProperty(eric,"eid",{
+    //  定义  属性
+  writable:false,
+  //可修改
+  configurable:false,//双保险
+  //配置
+})
+//想禁止删除ename属性
+Object.defineProperty(eric,"ename",{
+  configurable:false
+})
+//想禁止for in循环遍历到salary属性
+Object.defineProperty(eric,"salary",{
+  enumerable:false,
+  //可遍历
+  configurable:false, //双保险
+})
+
+//尝试把已经关闭的开关再打开
+// Object.defineProperty(eric,"eid",{
+//   writable:true,
+//   configurable:true //不可逆
+// })
+//故意修改eid
+// eric.eid=-2;
+//故意删除ename属性
+//delete eric.ename;
+//就想尝试看eric的所有隐私
+for(var key in eric){
+  console.log(`${key} : ${eric[key]}`)
+}
+//enumerable只能防住for in，防不住.直接访问
+console.log(eric.salary); //js语言不严格，所以不要和其他严格的语言做对比。
+console.log(eric);
+</script>
+</body>
+</html>

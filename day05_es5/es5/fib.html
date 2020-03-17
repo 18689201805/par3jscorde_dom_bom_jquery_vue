@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //斐波那契数列
+
+    // function fib(n){
+    //   if(n<3){
+    //     return 1
+    //   }else{
+    //    //return f(n-1)+f(n-2)
+    //    return arguments.callee(n-1)+arguments.callee(n-2)
+    //   }
+
+    // }
+    //console.log(fib(7))
+    //for循环
+    function fib(n){
+      if(n<3){
+        return 1
+      }else{
+       var f1=1,f2=1,fn;
+       //反复执行相同的操作
+       for(var i=3;i<=n;i++){
+        //每次将f1的值和f2的值相加,放入fn中
+        fn=f1+f2;
+        //将f2的值给f1,fn的值给f2;
+        f1=f2;
+        f2=fn;
+        //循环结束,fn变量的值,就对应月份的值
+       }
+       return fn;
+        
+      }
+
+    }
+    console.log(fib(100)) 
+  </script>
+</body>
+</html>
