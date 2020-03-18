@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var father={
+  bal:10000000000,
+  car:"infiniti"
+}
+var hmm=Object.create(father,{
+  phone:{
+    value:"iPhoneX",
+    writable:true,
+    enumerable:true
+  },
+  bao:{
+    value:"LV",
+    writable:true,
+    enumerable:true
+  }
+});
+Object.seal(hmm);
+
+console.log(hmm);
+console.log(hmm.bal, hmm.car);
+console.log(hmm.phone, hmm.bao);
+</script>
+</body>
+</html>

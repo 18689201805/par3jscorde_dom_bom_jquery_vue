@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//比如有一个共用的函数jisuan，可计算某个员工的工资
+//window中: 
+function jisuan(base,bonus1,bonus2){
+  console.log(`${this.ename}的总工资是${base+bonus1+bonus2}`)
+}
+//有两个员工: 
+var lilei={ename:"Li Lei"};
+var hmm={ename:"Han Meimei"};
+//但是hmm的工资是放在数组中给的
+var arr=[4000,5000,6000];
+jisuan     .apply( hmm,        arr        );
+//                  |        打 | 散
+//                  |   4000, 5000 , 6000
+//                  |     ↓     ↓      ↓
+//function jisuan(  ↓   base,bonus1,bonus2){
+  //console.log(`${this.ename}的总工资是${base+bonus1+bonus2}`)
+//}
+</script>
+</body>
+</html>

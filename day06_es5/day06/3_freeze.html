@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+"use strict";
+
+var pool={
+  host:"127.0.0.1", //writable:false
+  port:3306, //writable:false
+  db:"xz" //writeable:false
+}
+//冻结pool对象
+Object.freeze(pool);
+
+pool.host="192.168.0.100";
+pool.db="test";
+console.log(pool);
+</script>
+</body>
+</html>

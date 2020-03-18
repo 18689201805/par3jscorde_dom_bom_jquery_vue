@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+"use strict";
+
+var eric={
+  eid:1001, //只读
+  ename:"埃里克" //禁止删除
+}
+Object.defineProperties(eric,{
+  eid:{
+    writable:false
+  }
+})
+//阻止为eric扩展新属性
+//Object.preventExtensions(eric);
+//密封eric对象: 既可防扩展，又可防删除
+Object.seal(eric);
+
+//尝试修改eid属性
+//eric.eid=-2;
+//尝试为eric添加新的不同名的eid属性
+//eric.Eid=-2;
+//尝试删除ename属性
+//delete eric.ename;
+console.log(eric);
+</script>
+</body>
+</html>

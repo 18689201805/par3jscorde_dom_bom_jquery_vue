@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //es5新增函数的使用:every
+    var arr1=[1,2,3,4,5]
+    var arr2=[2,4,6,8,10]
+    //判断哪个数组都是偶数组成
+    //every自带for循环,会自动遍历数组的值遍
+    console.log(arr1.every(function(elem,i,arr){
+      console.log(`自动调用了一次回调函数,本次检查arr1中的${elem}`)
+      return elem%2==0;
+    }),
+    arr2.every(function(elem,i,arr){
+      console.log(`自动调用了一次回调函数,本次检查arr2中的${elem}`)
+      return elem%2==0
+    })
+    )
+    //判断的哪个数组是升序
+    var arr4=[1,2,3,4,5];
+    var arr5=[2,4,7,4,9];
+    console.log(arr4.every(function(elem,i,arr){
+      console.log(`自动调用arr4.every()一次回调函数,用${arr}的当前元素${elem}和下一个位置的元素${arr[i+1]}做比较,判断结果为${i<arr.length-1?elem<=arr[i+1]:true}`)
+      //如果当前位置i,还没到数组最后一个位置(length-1),才正常比较,如果最后一个则不作比较
+      return i<arr.length-1? elem<=arr1[i+1]:true//当前元素<=下一个元素的值//坑轮到最后一个值相比时没得比返回undefined 相比则为false
+    }),
+    arr5.every(function(elem,i,arr){
+      console.log(`自动调用arr5.every()一次回调函数,用${arr}的当前元素${elem}和下一个位置的元素${arr[i+1]}做比较,判断结果为${i<arr.length-1?elem<=arr[i+1]:true}`)
+      return i<arr.length-1?elem<=arr[i+1]:true;
+    })
+    )
+
+    // 判断数组中是否包含符合条件的元素some()函数的使用,只要有一个符合条件的就会返回true,之后不继续遍历后面的元素,只有当遍历元素为false,之后才会继续遍历后续元素,直到找到符合的元素为止
+    var arr6=[1,2,3,4,5]
+    var arr7=[2,4,6,8,10]
+    console.log(
+      arr6.some(function(elem,i,arr){
+        console.log(`自动调用了一次回调函数,本次检查arr1中的${elem},返回${elem%2!=0}`)
+        return elem%2!=0 //判断是否为奇数//有一个符合条件即为true
+      }),
+      arr7.some(function(elem,i,arr){
+        console.log(`自动调用了一次回调函数,本次检查arr1中的${elem},返回${elem%2!=0}`)
+        return elem%2!=0 //判断是否为奇数//只有所有为false才会输出false
+    })
+    )
+    
+  </script>
+</body>
+</html>

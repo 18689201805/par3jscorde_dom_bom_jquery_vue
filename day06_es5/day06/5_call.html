@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//比如有一个共用的函数jisuan，可计算某个员工的工资
+//window中: 
+function jisuan(base,bonus1,bonus2){
+  console.log(`${this.ename}的总工资是${base+bonus1+bonus2}`)
+}
+//有两个员工: 
+var lilei={ename:"Li Lei"};
+var hmm={ename:"Han Meimei"};
+//两个员工都想用jisuan()函数，计算自己的薪资
+//错误1: jisuan() this->window，所以不是想要的
+//错误2: lilei.jisuan() 错误！因为李雷自己没有jisuan()函数，同时李雷的爹是Object的原型对象，也没有jisuan()函数，所以lilei无权调用jisuan()函数!
+console.log(lilei);
+console.log(window);
+//lilei.jisuan(); //报错: lilei.jisuan()不是一个函数
+//正确: 因为jisuan()在全局定义，所以可直接调用
+//      但是因为jisuan()中的this不是lilei，想换成lilei，就要用call()来调用jisuan()
+jisuan.call(lilei,10000,1000,2000)
+//jisuan()中的this被临时替换为->lilei
+//其实执行的一瞬间，等效于执行lilei.jisuan()
+//其实相当于让lilei调用了一个原本不可能被调用到的函数——抢
+//hmm也想抢jisuan()函数计算自己的薪资
+jisuan      .call( hmm,4000, 5000, 6000)
+//                  |    ↓     ↓     ↓
+//function jisuan(  ↓  base,bonus1,bonus2){
+  //console.log(`${this.ename}的总工资是${base+bonus1+bonus2}`)
+//}
+</script>
+</body>
+</html>

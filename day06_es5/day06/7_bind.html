@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//比如有一个共用的函数jisuan，可计算某个员工的工资
+//window中: 
+function jisuan(base,bonus1,bonus2){
+  console.log(`${this.ename}的总工资是${base+bonus1+bonus2}`)
+}
+//有两个员工: 
+var lilei={ename:"Li Lei"};
+var hmm={ename:"Han Meimei"};
+//如果两个人需要反复频繁给自己算薪资，总是抢，就很不方便了
+//李雷下决心自己买一个专属于自己的
+var jisuan2=jisuan.bind(lilei);
+//bind干了2件事: 
+//1. 基于原函数jisuan()，创建出一个一模一样的新函数副本
+//2. 将bind后第一个实参对象，永久替换进了新函数副本中，永久代替了this
+//jisuan2:function jisuan(base,bonus1,bonus2){
+  //               lilei
+  //                 ↓
+  //console.log(`${this.ename}的总工资是${base+bonus1+bonus2}`)
+//}
+//结果: jisuan2() 永久的专属于lilei了
+// jisuan.call(lilei,10000,1000,2000)
+console.log(jisuan);
+console.log(jisuan2);
+console.log(jisuan==jisuan2)
+jisuan2(10000,1000,2000);
+jisuan2(10000,500,500);
+
+//hmm也买一个自己专属的
+var jisuan3=jisuan.bind(hmm);
+jisuan3(4000,5000,6000)
+</script>
+</body>
+</html>

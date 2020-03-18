@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//点名: 
+var names=["亮亮","然然","东东"];
+//旧
+// for(var i=0;i<names.length;i++){
+//   alert(`${names[i]} - 到！`);
+// }
+//ES5
+//names.forEach(function(elem){ alert(`${elem} - 到！`) })
+//箭头函数进一步简写（明天讲！先别问，或者自己先看小程序day07。）
+names.forEach(n=>alert(`${n} - 到！`));
+</script>
+</body>
+</html>

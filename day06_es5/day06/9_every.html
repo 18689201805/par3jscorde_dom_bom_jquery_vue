@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var arr1=[1,2,3,4,5];
+var arr2=[2,4,6,4,2];
+//想判断哪个数组都是偶数组成
+console.log(
+  arr1.every(function(elem){
+    console.log(`自动调用了一次回调函数,本次检查arr1中的${elem},返回${elem%2==0}`)
+    return elem%2==0;//当前元素是偶数吗？
+  }),
+  arr2.every(function(elem){
+    console.log(`自动调用了一次回调函数,本次检查arr2中的${elem},返回${elem%2==0}`)
+    return elem%2==0;
+  })
+)
+</script>
+</body>
+</html>

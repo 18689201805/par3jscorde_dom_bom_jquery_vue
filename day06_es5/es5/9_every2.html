@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var arr1=[1,2,3,4,5];
+var arr2=[2,4,6,4,2];
+//想判断哪个数组是升序
+console.log(
+  arr1.every(function(elem,i,arr){
+    console.log(`自动调用arr1.every()中的回调函数,用${arr}中的当前元素${elem}和下一个位置的元素${arr[i+1]}做比较，判断结果为${i<arr.length-1?elem<=arr[i+1]:true}`);
+    //如果当前位置i，还没到数组最后一个位置(length-1)，才正常比较。如果已经到最后一个元素位置，则直接返回true！放他过去！
+    return i<arr.length-1?elem<=arr[i+1]:true;//当前元素值<=下一个位置的元素值
+  }),
+  arr2.every(function(elem,i,arr){
+    console.log(`自动调用arr2.every()中的回调函数,用${arr}中的当前元素${elem}和下一个位置的元素${arr[i+1]}做比较，判断结果为${i<arr.length-1?elem<=arr[i+1]:true}`)
+    return i<arr.length-1?elem<=arr[i+1]:true;
+  })
+)
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //替换this的指向call,apply bind
+    //call替换this
+    //有一个公共函数jisuan,可计算某个员工的工资
+    //这个函数时存在Windows中
+    function jisuan(base,bonus1,bonus2){
+      console.log(`${this.ename}的总工资是${base+bonus1+bonus2}`)
+      //当jisuan调用的一瞬间this.ename指向了lilei lilei.ename
+    }
+    //计算两个员工
+    var lilei={ename:"lilei"}
+    var hmm={ename:"han mei mei"}
+    //lilei.jisuan();//报错is not a function
+    //jisuan.call(lilei,10000,2000,1000)
+   // jisuan.call(hmm,10000,2000,1000)
+
+    //1.apply替换this,z专门针对数组传参,apply会打散再传参
+    var arr=[10000,3000,5000]
+    jisuan.apply(lilei,arr)
+    jisuan.apply(hmm,arr)
+
+    //bind函数使用 是创建函数的新副本,永久指向谁调用就指谁
+    //1.如果两个人需要反复频繁给自己算薪资 
+    //bind干两件事
+    //基于原函数jisuan(),创建出一个一模一样的新函数副本
+    //将bind后第一个实参对象,永久替换了新函数副本总永久替换了this
+    var jisuan2=jisuan.bind(lilei,10000);//bind不仅可以绑定变量名,还可以永久绑定部分实参值为固定值
+    var jisuan3=jisuan.bind(hmm);
+    jisuan2(3000,1100)//只需要传两个值
+    jisuan3(10000,3000,100)
+    console.log(jisuan===jisuan2===jisuan3)//false说明创建了一个副本或者克隆了一份副本
+
+    
+
+  </script>
+</body>
+</html>

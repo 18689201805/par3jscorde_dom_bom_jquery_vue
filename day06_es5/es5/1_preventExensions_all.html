@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict"
+    var eric={
+      eid:1001,
+      ename:"埃里克"
+    }
+    // Object.defineProperty(eric,"eid",{//单属性
+    //     writable:false,
+    //     configurable:false
+    // })
+    
+    //eric.eid=124;
+    //阻止添加新属性
+   // Object.preventExtensions(eric)
+
+   Object.seal(eric)//防住对象的两件事件事 不能添加,删除
+    //eric.Eid=2154;//报错 添加
+    //delete eric.ename;
+    console.log(eric)
+
+
+     //冻结
+     var pool={
+       host:"127.0.0.1",
+       port:3306,
+       db:"xz"
+     }
+     //冻结对象三件事:不能修改,删除,增加 自动调用writable configurable enarable
+     //使用在公共模块ex:pool连接池这种类型
+     Object.freeze(pool);
+     //pool.hosts="127.0.0.8"
+     //pool.port=8500;
+     //delete pool.port;
+     console.log(pool)
+
+
+
+     //object.create()的使用
+     var father={
+       bal:1000000000,
+       car:"infiniti"
+     }
+     var hmm=Object.create(father,{
+       //在继承父对象的基础上,给hmm添加自有属性,
+       phone:{
+         value:"iphonex",
+         writable:true,
+         enumerable:true,
+
+       },
+       bao:{
+         value:"lv",
+         writable:true,
+         enumerable:true
+       }
+     });
+     console.log(hmm);
+     console.log(hmm.bal,hmm.car,hmm.phone,hmm.bao)
+  </script>
+</body>
+</html>
