@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var names=["亮亮","然然","东东"];
+// for(var i=0;i<names.length;i++){
+//   console.log(`${names[i]} - 到！`)
+// }
+for(var n of names){
+  console.log(`${n} - 到！`)
+}
+
+function add(){
+  var sum=0;
+  // for(var i=0;i<arguments.length;i++){
+  //   sum+=arguments[i]
+  // }
+  for(var n of arguments){
+    sum+=n;
+  }
+  return sum;
+}
+console.log(add(1,2,3), add(1,2,3,4,5));
+
+var str="hello";
+console.log(`hello,由以下字母组成: `)
+// for(var i=0;i<str.length;i++){
+//   console.log(str[i])
+// }
+for(var c of str){
+  console.log(c)
+}
+</script>
+</body>
+</html>

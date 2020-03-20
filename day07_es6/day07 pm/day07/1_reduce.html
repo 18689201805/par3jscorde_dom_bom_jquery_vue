@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var arr=[1,2,3,4,5];
+//想对数组中所有元素求和
+var result=arr.reduce(
+  function(prev,elem){
+    //把当前元素值和截止到目前旧的汇总值相加，计算出新的汇总值，返回给reduce函数
+    return prev+elem;
+  },
+  0 //从0开始累加
+);
+console.log(result);//15
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+// console.log(a);//undefined
+// var a=10;
+// console.log(a);//10
+
+//console.log(a); //报错: Cannot access 'a' before initialization
+//                      不能    访问   a   在      初始化变量 之前
+//(function(){
+//let a=10;
+  //var _a=10;
+//})();
+
+var a=10;
+(function(){
+  //let b=100;
+  var _b=100;
+  console.log(window);
+})();
+
+let c=10;
+let c=100;
+</script>
+</body>
+</html>

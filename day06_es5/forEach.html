@@ -13,7 +13,9 @@
    // names.forEach(function(elem){alert(`${elem}--到`)})
     //es6箭头函数
     names.forEach(elem=>alert(`${elem}--到`))
-    //map遍历数组,原数组不变,会创建新数组 先自动创建new arry 自带for循环
+  
+	
+	//map遍历数组,原数组不变,会创建新数组 先自动创建new arry 自带for循环
     var arr=[1,2,3,4,5]
     var arr2=arr.map(function(elem,i,arr){
       return elem*2
@@ -21,6 +23,22 @@
     console.log(arr)
     console.log(arr2)
     console.log(arr2===arr)//false 创建了新数组
+
+
+	//fliter
+		//想复制出数组中的偶数元素放入新数组中
+		var arr3=arr.filter(function(elem){
+		  return elem%2==0;//只有偶数元素值才能放入新数组中
+		})
+		console.log(arr);
+		console.log(arr3);
+
+	//reduce使用 想对数组中的元素求和
+	var result=arr.reduce(function(prev,elem ,i,arr){
+		return prev+elem
+	},
+	)
+	console.log(result);
   </script>
 </body>
 </html>

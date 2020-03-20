@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var arr=[12,23,123,32,3,1,2];
+arr.sort((a,b)=>a-b);
+console.log(arr);
+
+var str="you can you up";
+str=str.replace(/\b[a-z]/ig,kw=>kw.toUpperCase())
+console.log(str);
+
+var teachers=["亮亮","然然","东东"];
+teachers.forEach(t=>console.log(`${t} - 到！`));
+
+var arr=[1,2,3,4,5];
+var arr2=arr.map(elem=>elem*2);
+console.log(arr2);
+
+var add=(a,b)=>a+b;
+console.log(add(3,5));//8
+
+(()=>{
+  var now=new Date();
+  console.log(`页面加载完成,at:${now.toLocaleString()}`)
+})();
+
+setInterval(()=>console.log(`滴答`),1000);
+</script>
+</body>
+</html>

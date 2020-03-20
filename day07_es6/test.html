@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var str="youcanyouup";
+    var arr=[];
+    for(var i=0;i<str.length;i++){
+      var char=str[i];
+      arr[char]==undefined?arr[char]=1:arr[char]++
+    }
+    console.log(arr);
+    var maxChar,count=0;
+    for(var key in arr){
+      if(arr[key]>count){
+        maxChar=key;
+        count=arr[key];
+      }
+    }
+    console.log(`str中出现最多的是${maxChar},共出现了${count}次`)
+  </script>
+</body>
+</html>

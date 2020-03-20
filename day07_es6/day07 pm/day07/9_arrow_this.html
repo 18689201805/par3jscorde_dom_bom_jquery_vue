@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//this->window
+var lilei={//不是作用域
+  sname: "Li Lei",
+  friends:["亮亮","然然","东东"],
+  //say:function(){
+  say(){//今后ES6中所有对象的方法不用加":function"
+  //但是这个简写不改变this！绝不等于箭头函数！
+    //Li Lei认识亮亮
+    //Li Lei认识然然
+    //Li Lei认识东东
+    //遍历lilei好友列表中每个朋友
+    this.friends.forEach(
+      f=>console.log(`${this.sname}认识${f}`)
+        //         希望this和say中的this保持一致都指lilei
+    )
+  }
+}
+lilei.say();
+</script>
+</body>
+</html>

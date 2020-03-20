@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//function intr(msg="主人很懒，什么也没留下"){
+function intr(msg){
+  //如果msg没有传入值(undefined)，则给变量msg临时赋值一个备用值作为默认值
+  msg===undefined&&(msg="主人很懒，什么也没留下")
+  console.log(`我的自我介绍是: ${msg}`)
+}
+intr("you can you up, no can no bibi");
+intr();
+
+//参数默认值无法解决，多个形参变量，都不确定的情况！
+//想定义一个肯德基点餐的函数
+function order(zhushi="香辣鸡腿堡",xiaochi="薯条",yinliao="可乐"){
+  console.log(`
+    您点的套餐是: 
+      主食:${zhushi},
+      小吃:${xiaochi},
+      饮料:${yinliao}
+  `)
+}
+//一个都不换
+order();
+//三个都换
+order("奥尔良烤腿堡","鸡块","奶茶")
+//只想换汉堡
+order("老北京鸡肉卷")
+//只想换薯条！
+//只想换可乐!
+</script>
+</body>
+</html>

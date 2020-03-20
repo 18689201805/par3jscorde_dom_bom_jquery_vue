@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+// function add(...arr){
+//   console.log(arr);
+//   var result=arr.reduce(function(prev,elem){
+//     return prev+elem;
+//   },0);
+//   return result;
+// }
+
+var add=(...arr)=>arr.reduce((prev,elem)=>prev+elem,0);
+console.log(add(1,2,3), add(1,2,3,4,5));
+
+//定义一个函数计算员工的薪资
+function calc(ename,...arr){
+  var result=arr.reduce((prev,elem)=>prev+elem,0)
+  console.log(`${ename}的总工资是:${result}`);
+}
+calc("Li Lei",10000,1000,2000);
+calc("Han Meimei", 4000,2000,3000,4000,5000)
+</script>
+</body>
+</html>

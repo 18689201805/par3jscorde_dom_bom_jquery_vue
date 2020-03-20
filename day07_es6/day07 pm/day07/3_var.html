@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var t=0;//全局变量，用来累积每个函数执行的时间
+function fun1(){
+  console.log(`fun1执行耗费0.3s`);
+  t+=0.3;
+}
+function fun2(){
+  console.log(`fun2执行耗费0.8s`);
+  t+=0.8;
+
+  //过了一段时间，老板让我修改一个fun2函数
+  //实现如果出错，就显示出错的时间
+  if(false){ //因为条件不满足，所以以下代码没有执行！
+    var t=new Date();//获得当前系统时间
+    console.log(`出错啦，at: ${t.toLocaleString()}`)
+  }
+}
+fun1();
+fun2();
+console.log(t);//希望是1.1，但是是0.3，少0.8
+</script>
+</body>
+</html>

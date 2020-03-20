@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ <!-- <script>
+   //定义一个点套餐的函数
+   //套餐有默认值
+   //用户可以随意选择更换
+   function order(zhushi="香辣鸡腿堡",xiaochi="薯条",yinliao="可乐"){
+     console.log(`
+      您点的套餐是:
+        主食:${zhushi},
+        小吃:${xiaochi},
+        饮料:${yinliao}
+        请当面清点
+     `)
+   }
+   
+   order();//OK
+   order("奥尔良鸡腿堡","红豆派","奶茶")//OK
+   //只想换主食,另外两个保持默认
+   order("米饭");
+   //只想改小吃和饮料
+   order("薯片","苹果汁")//no,把前面两个给改了
+ </script> -->
+ <script>
+   //参数解构function({属性名=形参,...}){} 调用时传的是对象order{属性名(注意:属性名要保持一致):修改的值}
+   function order({zhushi="香辣鸡腿堡",xiaochi="薯条",yinliao="可乐"}){
+     console.log(`
+      您点的套餐是:
+        主食:${zhushi},
+        小吃:${xiaochi},
+        饮料:${yinliao}
+        请当面清点
+     `)
+   }
+   order({xiaochi:"薯片",yinliao:"奶茶"});
+ </script> 
+</body>
+</html>

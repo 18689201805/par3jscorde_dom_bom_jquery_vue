@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var user={
+  uid:1001,
+  uname:"dingding",
+  uage:25,
+  login:function(){
+    console.log(`登录...`)
+  },
+  logout:function(){
+    console.log(`注销...`)
+  },
+  signup:function(){
+    console.log(`注册...`)
+  },
+  changePwd:function(){
+    console.log(`修改密码...`)
+  }
+}
+//将来都是从一个大的对象中先解构出想用的小部分，再单独使用
+//只想用uname和logout
+//var uname=user.uname;
+//var logout=user.logout;
+//:前的属性名用来配对
+//:后才是要接住属性值的变量
+//var {uname:uname, logout:logout}=user;
+//简写:当:前后的属性名和变量名相同时，其实可以只写一个
+var {uname,logout}=user;
+//但是，虽然名字只写了一遍，但是一个名字两用: 即用作配对，又当将来的变量名!
+console.log(`用户名:${uname}`)
+logout();
+</script>
+</body>
+</html>
