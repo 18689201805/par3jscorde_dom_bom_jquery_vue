@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//想定义一个点套餐的函数
+//套餐有默认值
+//用户可以随意选择更换
+// function order({//装扮
+// //  配对   形参变量
+//    zhushi:zhushi,
+//   xiaochi:xiaochi,
+//   yinliao:yinliao
+// }){
+function order({zhushi="香辣鸡腿堡",xiaochi="薯条",yinliao="可乐"}){
+  // zhushi===undefined&&(zhushi="香辣鸡腿堡");
+  // xiaochi===undefined&&(xiaochi="薯条");
+  // yinliao===undefined&&(yinliao="可乐");
+  console.log(`
+    您点的套餐是: 
+      主食:${zhushi},
+      小吃:${xiaochi},
+      饮料:${yinliao}
+    请当面查验清点
+  `)
+}
+//套餐中一个都不换！
+order({});
+//套餐中全都换！
+order({//装扮
+//  配对    实参值
+   zhushi:"奥尔良烤腿堡",
+  xiaochi:"红豆派",
+  yinliao:"奶茶"
+});
+//只想换主食，另外两个保持默认
+order({//装扮
+// 配对   实参值
+  zhushi:"巨无霸"
+});
+//只想换小吃?
+order({//装扮
+//  配对   实参值
+  xiaochi:"薯泥"
+});
+//只想换饮料?
+order({//装扮
+//  配对   实参值
+  yinliao:"红茶"
+})
+//想换小吃和饮料
+order({//装扮
+// 配对    实参值
+  yinliao:"牛奶",
+  xiaochi:"辣翅"
+})
+//想换主食和饮料
+
+</script>
+</body>
+</html>

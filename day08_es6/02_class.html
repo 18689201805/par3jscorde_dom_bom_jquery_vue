@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //定义一个学生类型,要求:
+    //将来每个学生都要有姓名/年龄两个属性
+    //将来每个学生都应该会自我介绍
+    // function Student(sname,sage){
+    //   this.sname=sname,
+    //   this.sage=sage
+    // }
+    // Student.prototype.intr=function(){
+    //   console.log(`我是${this.sname},今年${this.sage}岁`)
+    // }
+    // var lilei=new Student("lilei",11);
+    // console.log(lilei);
+    // lilei.intr();
+
+    //构造函数使用class新的(简写)写法class的用法(以后都这样写)等于旧写法(本质)
+    class Student{
+     // className="初一二班";//在class添加加的属性属于自有属性
+      constructor(sname,sage){//固定不变的constructor
+        this.sname=sname;
+        this.sage=sage;
+        //只有刚创建第一个子对象时,原型对象没有这个共有属性,才自动添加
+        if(Student.prototype.className===undefined){
+        Student.prototype.className="初一二班"//这样写是共有属性,不推荐有问题
+        }
+      };
+      intr(){
+        console.log(`我是${this.sname},今年${this.sage}岁`)
+      };
+    }
+    var lilei=new Student("lilei",11);
+    var hmm=new Student("han mei mei",10);
+    console.log(lilei);
+    console.log(hmm);
+    lilei.intr();
+    //过了一年升了一级
+    Student.prototype.className="初二二班"
+    console.log(lilei.className,hmm.className)
+    //添加一位新同学
+    var lily=new Student("liy",9)//因为重新调用了构造函数,重新执行了Student.prototype.className="初一二班",所以都降级了,解决:在构造函数添加判断,
+    console.log(lily.className,lilei.className,hmm.className)//降级了有问题
+
+  </script>
+</body>
+</html>

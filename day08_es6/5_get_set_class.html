@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+"use strict";
+class Emp{
+  constructor(eid, ename,eage){
+    this.eid=eid;
+    this.ename=ename;
+    this.eage=eage;
+    //要保护的是将来要创建的子对象
+    Object.defineProperties(this,{
+      eid:{ writable:false },
+      //1. 定义一个隐姓埋名的半隐藏的数据属性
+      _eage:{
+        value:eage,
+        writable:true,
+        enumerable:false
+      }
+    })
+    //密封将来要出生的子对象
+    Object.seal(this);
+  }
+  //添加一个访问器属性eage，包含两个保镖函数get和set
+  get eage(){
+    return this._eage;
+  }
+
+  set eage(value){
+    if(value>=18&&value<=65){
+      this._eage=value
+    }else{
+      throw Error("年龄必须介于18~65之间")
+    }
+  }
+}
+
+var eric=new Emp(1001, "埃里克", 25);
+
+//试图修改eid属性
+//eric.eid=0;
+//试图删除ename属性
+//delete eric.ename
+//试图修改eage为-2
+//eric.eage=-2;
+
+console.log(eric);
+
+var smith=new Emp(1002,"史密斯",26);
+//试图修改eid属性
+//smith.eid=0;
+//试图删除ename属性
+//delete smith.ename
+//试图修改eage为-2
+//smith.eage=-2;
+
+console.log(smith);
+</script>
+</body>
+</html>

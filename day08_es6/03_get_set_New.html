@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script>
+    //构造函数访问器旧的写法,保护将来创建的对象也同样有此功能
+    "use strict"
+    function Emp(eid,ename,eage){
+      this.eid=eid;
+      this.ename=ename;
+      this.eage=eage;
+      Object.defineProperties(this,{
+        eid:{writable:false},
+        _eage:{
+          value:eage,//因为this是将来创建的所以之间创建eage
+          writable:true,
+          enumerable:false
+        },
+        eage:{
+          get(){
+            return this._eage
+          },
+          set(value){
+            if(value>=18&&value<=65){
+              return this._eage=value;
+            }else{
+              throw Error("年龄必须在18~65之间");
+            }
+          }
+        }
+      })
+      //密封
+      Object.seal(this)
+    }
+    var eric=new Emp(1001,"埃里克",25);
+    //试图修改eid
+    //eric.eid=0;
+    //试图删除姓名
+    //delete eric.ename
+    //修改年龄
+    //eric.eage=-2;
+    console.log(eric)
+    var simith= new Emp(1002,"史密斯",29);
+    //试图修改eid
+    //simith.eid=0;
+    //试图删除姓名
+    //delete simith.ename
+    //修改年龄
+    //simith.eage=-0;
+
+    console.log(simith)
+  </script> -->
+  <script>
+    //构造函数访问器新的写法保护将来创建的对象也同样有此功能加上 class,
+    "use strict"
+    class Emp{
+    constructor(eid,ename,eage){
+      this.eid=eid;
+      this.ename=ename;
+      this.eage=eage;
+      Object.defineProperties(this,{
+        eid:{writable:false},
+        _eage:{
+          value:eage,//因为this是将来创建的所以之间创建eage
+          writable:true,
+          enumerable:false
+        },
+        //get set 使用继承方式进行创建
+      })
+      //密封
+      Object.seal(this)
+    }
+    //所有孩子共用的保镖功能应该只放在孩子的父对象中,一份即可,继承方式
+   // Object.defineProperties(Emp.prototype,{
+      //请保镖冒名顶替
+      // eage:{
+      //     get(){
+      //       return this._eage
+      //     },
+      //     set(value){
+      //       if(value>=18&&value<=65){
+      //         return this._eage=value;
+      //       }else{
+      //         throw Error("年龄必须在18~65之间");
+      //       }
+      //     }
+      //   }
+      // })
+      
+    //加class的访问器属性的写法,
+        get eage(){
+            return this._eage
+          };
+        set eage(value){
+            if(value>=18&&value<=65){
+              return this._eage=value;
+            }else{
+              throw Error("年龄必须在18~65之间");
+            }
+          }
+    
+}
+   
+    var eric=new Emp(1001,"埃里克",25);
+    //试图修改eid
+    //eric.eid=0;
+    //试图删除姓名
+    //delete eric.ename
+    //修改年龄
+    //eric.eage=-2;
+    console.log(eric)
+    var simith= new Emp(1002,"史密斯",19);
+    //试图修改eid
+    //simith.eid=0;
+    //试图删除姓名
+    //delete simith.ename
+    //修改年龄
+    //simith.eage=-0;
+
+    console.log(simith)
+  </script>
+</body>
+</html>

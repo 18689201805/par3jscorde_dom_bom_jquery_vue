@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//定义一个学生类型，要求: 
+//将来每个学生都要有学生姓名和学生年龄两个属性
+//将来每个学生都应该会自我介绍
+//1. 用class{}包括构造函数和原型对象方法
+//类型
+class Student{
+  //className="初一2班"
+  constructor(sname,sage){
+    //this.className="初一2班";
+    this.sname=sname;
+    this.sage=sage;
+    //只有刚创建第一个子对象时，原型对象中没有这个共有属性，才自动添加
+    if(Student.prototype.className===undefined){
+      Student.prototype.className="初一2班";
+    }
+    //否则如果原型对象中已经有这个共有属性了，就不再重复添加
+  }
+  intr(){
+    console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+  }
+}
+
+var lilei=new Student("Li Lei",11);//首次调用构造函数，因为原型对象中暂时没有className共有属性，所以自动向原型对象中添加一个共有属性
+var hmm=new Student("Han Meimei",12);//再次调用构造函数，因为原型对象中已经有了className共有属性，所以不再重复向原型对象中添加className属性
+console.log(lilei);
+console.log(hmm);
+//过了一年大家同时升一级
+Student.prototype.className="初二2班";
+console.log(lilei.className, hmm.className);
+//班里招了一位新同学
+var lily=new Student("Lily",10);//再次调用构造函数，因为原型对象中已经有了className共有属性，所以不再重复向原型对象中添加className属性
+console.log(lily);
+console.log(lilei.className, hmm.className, lily.className);
+//     希望        初二2班        初二2班          初二2班
+</script>
+</body>
+</html>

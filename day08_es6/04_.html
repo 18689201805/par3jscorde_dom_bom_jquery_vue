@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //extends的用法,继承父对象
+    //父对象
+    class Enemy{
+      constructor(x,y){
+        this.x=x;
+        this.y=y;
+      }
+      fly(){
+        console.log(`飞到 x:${this.x},y:${this.y}中的位置`)
+      }
+    };
+    //子对象
+    class Plane extends Enemy{//extends继承父对象的关键词
+      constructor(x,y,score){
+        super(x,y);//固定的关键词super
+        this.score=score;
+      }
+      getScore(){
+        console.log(`击落一架${this.score}分`)
+      }
+    }
+    //子对象
+    class San extends Enemy{
+      constructor(x,y,award){
+        super(x,y);
+        this.award=award;
+      }
+      getAward(){
+        console.log(`点击一个降落伞得${this.award}`)
+      }
+    }
+    var p1=new Plane(10,20,5);
+    var s1=new San(20,50,"1 life")
+    console.log(p1);
+    console.log(s1);
+    p1.fly();
+    p1.getScore();
+    s1.fly();
+    s1.getAward();
+  </script>
+</body>
+</html>

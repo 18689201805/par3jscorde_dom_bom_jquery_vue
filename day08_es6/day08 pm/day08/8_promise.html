@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+function liang(){
+  //只有return出来的格子间对象，才能和下一项任务串联
+  return new Promise(//创建一个格子间对象
+    function(open){//只有function才能保存多条语句的任务
+      //赠:开门的函数
+      console.log(`亮起跑...`);
+      setTimeout(function(){
+        console.log(`亮到达终点!`);
+        open();//亮执行完开门！通知下一项任务可以继续！
+      },6000)
+    }
+  )
+}
+function ran(){
+  return new Promise(
+    function(open){
+      console.log(`然起跑...`);
+      setTimeout(function(){
+        console.log(`然到达终点`);
+        open();
+      },4000)
+    }
+  )
+}
+function dong(){
+  return new Promise(
+    function(open){
+      console.log(`东起跑...`);
+      setTimeout(function(){
+        console.log(`东到达终点`)
+        open();
+      },2000)
+    }
+  )
+}
+console.log(`比赛开始`);
+//先让亮串联然
+liang()//return new Promise()
+.then(ran)//因为ran也return了new Promise()
+.then(dong)//因为dong也return了new Promise()
+.then(()=>console.log(`比赛结束`))
+</script>
+</body>
+</html>

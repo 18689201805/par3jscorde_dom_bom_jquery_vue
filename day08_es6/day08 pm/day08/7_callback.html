@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//亮定义一个筐，准备暂时保存下一项任务
+function liang(kuang){
+  console.log(`亮起跑...`);
+  setTimeout(function(){
+    console.log(`亮到达终点!`);
+    //当亮自己的任务结束后
+    kuang();//才取出筐里的东西开始执行
+  },6000)
+}
+//然也定义一个筐，准备暂时保存下一项任务
+function ran(kuang){
+  console.log(`然起跑...`);
+  setTimeout(function(){
+    console.log(`然到达终点`);
+    //当然自己的任务结束后
+    kuang();//才取出筐里的东西开始执行
+  },4000)
+}
+//东也定义一个筐，准备暂时保存下一项任务
+function dong(kuang){
+  console.log(`东起跑...`);
+  setTimeout(function(){
+    console.log(`东到达终点`)
+    //当东自己的任务结束后
+    kuang();//才取出筐里的东西开始执行
+  },2000)
+}
+console.log(`比赛开始`);
+//错误:
+// //先调用亮
+// liang();//异步
+// //再调用然
+// ran();//异步
+// //谁也不等谁！
+//不好的做法:回调函数
+liang(
+  function(){//kuang
+    ran(
+      function(){//kuang
+        dong(
+          function(){//kuang
+            console.log(`比赛结束！`)
+          }
+        )
+      }
+    )
+  }
+);
+//kuang里装的ran，但是暂不执行！
+//当6s后，liang内部会自动调用kuang里装的ran()。
+</script>
+</body>
+</html>

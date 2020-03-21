@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//定义一个学生类型，要求: 
+//将来每个学生都要有学生姓名和学生年龄两个属性
+//将来每个学生都应该会自我介绍
+//1. 用class{}包括构造函数和原型对象方法
+//类型
+class Student{
+  constructor(sname,sage){
+    this.sname=sname;
+    this.sage=sage;
+
+  }
+  intr(){
+    console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+  }
+}
+
+var lilei=new Student("Li Lei",11);
+console.log(lilei);
+lilei.intr();
+</script>
+</body>
+</html>

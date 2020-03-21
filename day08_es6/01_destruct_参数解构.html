@@ -29,7 +29,13 @@
  </script> -->
  <script>
    //参数解构function({属性名=形参,...}){} 调用时传的是对象order{属性名(注意:属性名要保持一致):修改的值}
+   //对象的属性名是没有顺序的,不像数组那样有下标,运行时实参值会一一去找形参值相对应的值进行传参,没有就会返回undefined,不会报错但是会输出默认值 
    function order({zhushi="香辣鸡腿堡",xiaochi="薯条",yinliao="可乐"}){
+     //短路逻辑
+     //es6的详细写法 //简写{zhushi="香辣鸡腿堡",xiaochi="薯条",yinliao="可乐"}
+     //zhushi===undefined&&(zhushi="香辣鸡腿堡")
+     //xiaochi===undefined&&(zhushi="薯条")
+     //yinliao===undefined&&(zhushi="可乐")
      console.log(`
       您点的套餐是:
         主食:${zhushi},
@@ -38,7 +44,12 @@
         请当面清点
      `)
    }
-   order({xiaochi:"薯片",yinliao:"奶茶"});
+   //都不换,默认值输出
+   order({});
+   //换其中一个
+   order({xiaochi:"薯片",yinliao:"奶茶"})
+   //都换
+   order({zhushi:"米饭",xiaochi:"炒肉",yinliao:"啤酒"})
  </script> 
 </body>
 </html>
