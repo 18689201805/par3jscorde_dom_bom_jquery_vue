@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //使用正则解析url生成数组形式
+    var url="http://localhost:5500/public/index.html?uname=dingding&upwd=123456#top"
+    //使用零宽断言编写正则表达式
+    var reg=/[a-z]+(?=:\/\/)|(?<=:\/\/)[a-z0-9.]+(?=:)|(?<=:)\d+(?=\/)|\/[a-z0-9./]+(?=\?)|(?<=\?)[a-z0-9&=]+(?=#)|#[a-z0-9]+/ig
+    //使用match函数生成数组
+    var arr=url.match(reg);
+    console.log(arr)
+    //遍历数组就变成字符串就ok了
+    for(var item of arr){console.log(item)}
+  </script>
+</body>
+</html>

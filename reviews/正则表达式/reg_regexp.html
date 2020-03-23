@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //服务器传回来的关键词数组 不能用//创建正则,只能中new RegExp
+    //服务器传回来的数组
+    var arr=["微信","钉钉","QQ","直播"]
+    //用户输入一条信息
+    var input=prompt("请输入信息");
+    //编写正则查找敏感词new RegExp(写正则)
+    var reg=input.match(new RegExp(arr.join("|")))
+    //判断是否找到敏感词,没有返回null
+    if(reg!=null){
+      document.write(`<h1>在${reg.index}位置上发现敏感词:${reg[0]}</h1>`)
+    }else{
+    document.write(`<h1>哈哈:${input}</h1>`)
+    }
+  </script>
+</body>
+</html>

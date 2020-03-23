@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="container">
+    <li>85</li>
+    <li>98</li>
+    <li>95</li>
+    <li>78</li>
+    <li>56</li>
+    <li>67</li>
+  </ul>
+  <script>
+    //通过正则表达式使用split,join replace函数来分割字符串或者数组
+    //split返回的是数组
+    //按@切割邮箱
+    var mail="1451959778@qq.com"
+    var mail=mail.split("@");
+    console.log(mail)
+    
+    
+    //按空格和,号分割
+    var str="you can you up,no can no bibi"
+    //编写正则
+    var reg=/\s|,/;
+    var str=str.split(reg);
+    console.log(str)
+    
+    
+    //获取html页面id为score的元素内容,并组成数组;
+    //获取html页面id为score的元素内容(DOM查找操作)
+      var html=document.getElementById("container");
+      html=html.innerHTML
+    //var html=container.innerHTML
+      console.log(html);
+    //使用正则表达式replace()将前后替换为空格
+      html=html.replace(/^\s*<li>|<\/li>\s*$/ig,"");
+    //使用正则split函数用</li>\s*<li>
+      var arr=html.split(/<\/li>\s*<li>/);
+        console.log(arr);
+
+    //获取html页面的id为score的元素内容,并组成数组
+    //获取id为score的内容
+    var html1=container.innerHTML;
+    //使用正则函数replace替换前后空格以及标签
+    html1=html1.replace(/^\s*<li>|<\/li>\s*$/ig,"");
+    //使用split按</li><li>进行分割
+    var arr1=html1.split(/<\/li>\s*<li>/)
+      console.log(arr1)
+
+    //翻转字符串笔试题
+    //使用正则函数split按空格打散之后使用数组家函数翻转之后在合并就OK了
+    var str2="llovehalloworld"
+    str2=str2.split("");
+    str2=str2.reverse();
+    str2=str2.join("");
+    console.log(str2);
+  </script>
+</body>
+</html>

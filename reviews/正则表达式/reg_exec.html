@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //使用exec函数查找所有关键词的位置以及内容
+    var str="老师: 请用小红 我的 朋友造句。小亮:小红是我的朋友。小然: 朋友！小红是我的！"
+    //编写正则查找带小字的人名
+    var reg=/小[\u4e00-\u9fa5]/g;
+    //使用循环do{}while()遍历,没找到返回null 找打返回数组
+    do{
+      var arr=reg.exec(str);
+      if(arr!=null){
+       document.write(`<h1>在${arr.index}的位置上发现敏感词:${arr[0]}</h1>`)
+       //console.log(arr)
+      }else{
+        break;
+      }
+    }while(true)
+  </script>
+</body>
+</html>

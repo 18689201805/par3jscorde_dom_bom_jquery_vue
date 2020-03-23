@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //千分符的使用
+    //123456789.12 从个位开始每三位加一个,号
+    //创建一个变量
+    var str="1234567890.12";
+    //编写正则表达式,匹配每隔三位的数字
+    var reg=/(\d)(?=(\d{3})+(\.|$))/ig;
+    //使用函数replace进行添加一个逗号;
+    var str=str.replace(reg,"$1,");//$1固定写法
+    console.log(str);
+  </script>
+</body>
+</html>

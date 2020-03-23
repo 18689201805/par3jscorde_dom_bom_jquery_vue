@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <span id="s1">Hello</span>
+  <h1>标题一</h1>
+  <script>
+    //先获得body
+    var body=document.body;
+    //获得body下的所有字元素
+    var children=body.children
+    console.log(children[0],children[1],children[2])
+    //获得第一个子元素
+    var span=body.firstElementChild;
+    console.log(span);
+    //获得最后一个子元素
+    var script=body.lastElementChild;
+    console.log(script)
+    
+    //获得第二个元素
+    var h1=children[1];
+    var secondChildren=span.nextElementSibling
+    var secondChildren1=script.previousElementSibling
+    console.log(h1,secondChildren,secondChildren1)
+  </script>
+</body>
+</html>

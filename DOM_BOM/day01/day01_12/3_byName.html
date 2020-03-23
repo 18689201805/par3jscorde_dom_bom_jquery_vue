@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<form>
+用户名: <input type="text" name="uname"><br/>
+爱好: <label><input type="radio" name="favs" value="swimming">游泳</label>
+      <label><input type="radio" name="favs" value="running">跑步</label>
+      <label><input type="radio" name="favs" value="music">音乐</label>
+</form>
+<script>
+//想查找所有name名为favs的元素
+var rads=document.getElementsByName("favs");
+console.log(rads);
+
+//想查找name名为uname的一个文本框，必须加[0]
+var input=document.getElementsByName("uname")[0];
+console.log(input);
+</script>
+</body>
+</html>

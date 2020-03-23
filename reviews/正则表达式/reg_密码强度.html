@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //密码强度的使用
+    //题目:6~8位字母，数字的组合，至少包含一个大写字母和一位数字
+    //至少包含一个大写字母
+    //即一定包含大写字母和特殊符号
+    // (?![0-9a-z]+$)
+    //至少包含一位数字
+    //即一定包含数字和特殊符号
+    //(?![A-Za-z]+$)
+    //只能包含数字和字符并且不能有特殊符号且6~8位字母，数字
+    //[0-9a-zA-Z]{6,8}
+    //用户输入信息
+    var input=prompt("请输入密码");
+    //编写密码强度正则表达式
+    var reg=/^(?![0-9a-z]+$)(?![A-Za-z]+$)[a-zA-Z0-9]{6,32}$/;
+    //使用search函数查找敏感词进行验证密码格式是否正确
+    //var msg=input.search(reg);
+    // search没找到就返回-1作为条件,若找到则返回密码格式正确,反之密码格式错误
+    // if(msg!=-1){
+    //   //document.write(`<h1 style="color:green">${input}</h1>`)
+    //   document.write(`<h1 style="color:green">密码格式正确</h1>`)
+    // }else{
+    //   document.write(`<h1 style="color:red">密码格式错误</h1>`)
+    // }
+
+    //另一种写法 test函数时专门用来验证格式是否正确的 返回的值是true or false
+    if(reg.test(input)){
+      document.write(`<h1 style="color:green">密码格式正确</h1>`)
+    }else{
+      document.write(`<h1 style="color:red">密码格式错误</h1>`)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>DOM Tree</title>
+<meta charset="utf-8" />
+</head>
+<body>
+	<span id="s1">Hello</span>
+	<h1>标题一</h1>
+	<script>
+	// console.log(document);
+	// console.log(document.documentElement);
+	// console.log(document.head);
+	// console.log(document.body);
+
+	//先获得body
+	var body=document.body;
+	console.log(body);
+	//再获得body的所有直接子元素
+	var children=body.children;
+	console.log(children);//3个
+	//想获得body下第一个直接子元素
+	var span=body.firstElementChild;
+	console.log(span);
+	//想获得body下最后一个直接子元素: 
+	var script=body.lastElementChild;
+	console.log(script);
+	//想获得body下的h1元素: 3种
+	var h1=children[1];//body下第二个孩子
+			//span.nextElementSibling//span的下一个兄弟
+			//script.previousElementSibling//script的前一个兄弟
+	console.log(h1);
+	//只有这个例子不要用live server运行，因为live server会悄悄往网页中添加新内容。
+	//暂时只能去我的电脑文件夹里双击这个.html文件运行
+	</script>
+</body>
+</html>

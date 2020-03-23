@@ -8,7 +8,31 @@
 	<span id="s1">Hello</span>
 	<h1>标题一</h1>
 	<script>
-    
-  </script>
+		//先获得body下的所有节点
+		var body=document.body;
+		console.log(body)
+		//获得body下的第一个直接元素
+		var span=body.firstElementChild;
+		console.log(span)
+		//获得body下的最后一个直接元素
+		var script=body.lastElementChild;
+		console.log(script)
+
+		//获得body下的h1元素:3中办法 	其中一种是方式二的数组下标
+		var h1=span.nextElementSibling
+		var h11=script.previousElementSibling
+		console.log(h1,h11);
+
+
+
+		//方式二
+		//再获得body的所有直接子元素(3个)
+		var children=body.children;
+		console.log(children)//3个
+		//获得body下的h1/span/script元素
+		console.log(children[0])
+		console.log(children[1])
+		console.log(children[2])
+	</script>
 </body>
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //replace替换敏感词为※
+    //题目:老师说:请用小红造句;小亮:小红,我的朋友;小然:朋友!小红是我的
+    //将带有小字的人名替换为※
+    //创建变量
+    var str="老师说:请用小红造句;小亮:小红,我的朋友;小然:朋友!小红是我的"
+    //编写正则查找带小字的人名
+    var reg=/小[\u4e00-\u9fa5]/g;
+    //使用replace函数替换人名
+    var msg=str.replace(reg,"※※");
+    //高级替换
+    var msg=str.replace(reg,
+    // //创建回调函数
+      function(keyword){
+        return "※".repeat(keyword.length) //repeat函数"替换的内容".repeat(替换的次数即数字 长度也是数字)
+      }
+      );
+     console.log(msg)
+     //console.log(`共替换了${msg!=null?msg.length:0}次`)
+    //高级替换实例
+     var str1="公安局负责公共安全,有问题找公安"
+     var reg1=/公安局?|公共安全/ig
+     var msg1=str1.replace(reg1,
+        function(keyword){
+          return "※".repeat(keyword.length)
+        }
+      )
+      console.log(msg1)
+
+    //将首字母变为大写
+    var str2="you can you up, no can no bi bi"
+    //创建正则表达式
+    var reg2=/\b[a-z]/ig
+    var msg2=str2.replace(reg2,
+        function(keyword){
+          return keyword.toUpperCase();
+        }
+    )
+    console.log(msg2)
+
+    //删除前后的空格_笔试题
+    var str="  陈   仕  sam   "
+    //通过正则表达式使用replace函数进行提换
+    //var reg3=/^\s*|\s*$/g; 前后同时删除
+    //var reg3=/^\s*/;//只删除前面
+    var reg3=/\s*$/g;//只删除后面
+    var msg3=str.replace(reg3,"");
+    console.log(msg3)
+  </script>
+</body>
+</html>

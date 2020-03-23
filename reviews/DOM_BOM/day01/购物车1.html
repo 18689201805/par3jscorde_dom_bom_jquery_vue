@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{width:600px; text-align:center;
+      border-collapse:collapse;
+    }
+    td,th{border:1px solid black}
+    td[colspan="3"]{text-align:right;}
+    /* 使用选择器查找元素 */
+    tbody>tr>td:last-child{background:pink}
+    tfoot>tr>td:last-child{background:yellow}
+  </style>
+</head>
+<body>
+  <table id="data">
+    <thead>
+      <tr>
+        <th>商品名称</th>
+        <th>单价</th>
+        <th>数量</th>
+        <th>小计</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>iPhone6</td>
+        <td>¥4488.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+        <td class="subtitle">¥4488.00</td>
+      </tr>
+      <tr>
+        <td>iPhone6 plus</td>
+        <td>¥5288.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+        <td class="subtitle">¥5288.00</td>
+      </tr>
+      <tr>
+        <td>iPad Air 2</td>
+        <td>¥4288.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+        <td class="subtitle">¥4288.00</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">Total: </td>
+        <td>¥14064.00</td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+<script>
+  //DOW四步
+//查找要触发的元素
+  var table=document.getElementById("data");
+  var btns=table.getElementsByTagName("button");
+//为要触发的元素提前绑定事假处理函数
+  for(var btn of btns){
+    btn.onclick=function(){
+    //功能一
+    //3.查找要修改的元素
+      var span=this.parentNode.children[1]
+    //修改元素
+      var n=parseInt(span.innerHTML);
+      if(this.innerHTML=="+"){n++;}else if(n>1){n--};
+      //把修改的值手动放回页面中
+      span.innerHTML=n;
+      //功能二
+    //3.查找要修改的元素
+      var subTd=this.parentNode.nextElementSibling;
+    //4.修改元素 单价*数量
+      //4.1要查找单价的圆素
+      var price=parseInt(
+        this.parentNode
+            .previousElementSibling
+            .innerHTML
+            .slice(1)
+      )
+      //小计计算
+      var subTotal=price*n
+      //手动放回页面
+      subTd.innerHTML=`¥${subTotal.toFixed(2)}`
+
+      //功能三:把小计的计算到总计中
+    //3.查找要修改的元素
+    var Tbtotal=table.querySelector("tfoot>tr>td:last-child");
+    //4.修改元素
+    var subTd1=table.querySelectorAll("tbody>tr>td:last-child")
+    var total=0;
+    for(var td of subTd1){
+      total+=parseInt(td.innerHTML.slice(1))
+    }
+      //计算总价
+      Tbtotal.innerHTML=`¥${total.toFixed(2)}`
+    }
+  }
+</script>
+</html>

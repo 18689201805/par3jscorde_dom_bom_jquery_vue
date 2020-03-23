@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    用户名: <input type="text" name="uname"><br/>
+    爱好: <label><input type="radio" name="favs" value="swimming">游泳</label>
+          <label><input type="radio" name="favs" value="running">跑步</label>
+          <label><input type="radio" name="favs" value="music">音乐</label>
+    </form>
+</body>
+<script>
+  //使用查找表单元素的方法name查找 返回类数组
+  var rads=document.getElementsByName("favs")
+  //使用查找表单元素的方法name查找文本框 返回类数组 要拿出来就必须加[0.....]
+  var input=document.getElementsByName("uname")[0]
+  console.log(rads,input)
+</script>
+</html>

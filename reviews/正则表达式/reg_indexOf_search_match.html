@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //indexOf search match 查找关键词
+    //indexOf search 没找到敏感词返回-1  match没找到返回null 找到返回数组 index位置, 0内容 
+    //用户输入一条信息
+    var input=prompt("请输入一条信息")
+    //编写正则茶找指定关键词
+    //var reg=/([微薇喂]|w(ei)?)([信薪新]|x(in)?)/ig
+    //match查找敏感词的时候只能找到一个位置和一个关键词 不能带g
+    //var reg=/([微薇喂]|w(ei)?)([信薪新]|x(in)?)/i
+    //match查找所有敏感词不能带位置但写g
+    var reg=/([微薇喂]|w(ei)?)([信薪新]|x(in)?)/ig
+    //使用正则函数search 若没找到敏感词返回信息提示,找到显示禁止发送
+    //var msg=input.indexOf("微信")
+    // var msg=input.search(reg)
+    // if(msg!=-1){
+    //   document.write(`<h1>找到敏感词禁止发送</h1>`)
+    // }else{
+    //   document.write(`<h1>荣哥说:${input}</h1>`)
+    // }
+
+    //match函数用法
+    var msg=input.match(reg)
+    // if(msg!=null){
+    //   document.write(`<h1>在${msg.index}位置上找到敏感词:${msg[0]},禁止发送</h1>`)
+    // }else{
+    //   document.write(`<h1>荣哥说:${input}</h1>`)
+    // }
+    //match方式er
+    if(msg!=null){
+      document.write(`<h1>${msg},禁止发送</h1>`)
+    }else{
+      document.write(`<h1>荣哥说:${input}</h1>`)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{width:600px; text-align:center;
+      border-collapse:collapse;
+    }
+    td,th{border:1px solid black}
+    td[colspan="3"]{text-align:right;}
+    /* 使用选择器查找元素 */
+    tbody>tr>td:last-child{background:pink}
+    tfoot>tr>td:last-child{background:yellow}
+  </style>
+</head>
+<body>
+  <table id="data">
+    <thead>
+      <tr>
+        <th>商品名称</th>
+        <th>单价</th>
+        <th>数量</th>
+        <th>小计</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>iPhone6</td>
+        <td>¥4488.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+        <td class="subtitle">¥4488.00</td>
+      </tr>
+      <tr>
+        <td>iPhone6 plus</td>
+        <td>¥5288.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+        <td class="subtitle">¥5288.00</td>
+      </tr>
+      <tr>
+        <td>iPad Air 2</td>
+        <td>¥4288.00</td>
+        <td>
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </td>
+        <td class="subtitle">¥4288.00</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">Total: </td>
+        <td>¥14064.00</td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+<script>
+  //DOM四步
+  //1.查找需要触发的元素
+    //本例中因为用户点击按钮,就会触发一系列的变化,所以我们要找到table下的所有按钮
+    //获取页面元素id为data的所有元素内容
+    var table=document.getElementById("data");
+    //根据标签名找到所有的按钮,返回类数组对象
+    var btns=table.getElementsByTagName("button")
+  //2.提前为需要触发的元素绑定事件处理函数
+    //本例中:按钮元素有很多个,所有我们要遍历类数组对象进行绑定元素
+    for(var btn of btns){
+      //本例中每遍历一个类数组对象,就会绑定当前的事件处理函数
+      //btns遍历的值会直接赋给btn 所以直接绑定btn即可
+      btn.onclick=function(){
+  //功能一实现点击的+,-号为旁边的span改变数量
+      //3.查找要修改的元素 //this指向当前正在触发的事件
+        var span=this.parentNode.children[1]
+      //4.修改元素
+        //4.1获取span的内容//因为页面一切数据都是字符串所以要取整
+        var n=parseInt(span.innerHTML)
+        //4.2点击之后修改span的数量,当点击的是+号时 n++ 繁殖则n--
+        if(this.innerHTML=="+"){
+          n++;
+        }else if(n>1){
+          n--
+        }
+        //4.3修改的span内容都是副本,不会对页面造成影响,必须书架手动放回
+        span.innerHTML=n;
+  //功能二:数量修改后 小计接着改变 price*n得出小计
+        //因为在同一个事件中只需执行DOM 三四步即可
+      //3.查找要修改的元素;
+        var subTd=this.parentNode.nextElementSibling
+      //4.修改元素
+        //本例中:先查找再要获得单价以及截取价格才能实现价格*数量
+        var price=parseInt(
+          this.parentNode
+              .previousElementSibling
+              .innerHTML
+              .slice(1)
+        )
+        //计算小计
+        var subTotal=price*n
+        //把数据手动放回页面中
+        subTd.innerHTML=`¥${subTotal.toFixed(2)}`
+  //功能三
+        //3查找修改的元素
+        //3.1因为藏的很深的元素,如果我们用html特征以及节点间查找会很麻烦,所以使用选择器查找是最快的
+        var totalTd=table.querySelector("tfoot>tr>td:last-child");
+        //4修改元素
+        var subTds=table.querySelectorAll("tbody>tr>td:last-child");
+        var total=0
+        for(var td of subTds ){
+          total+=parseInt(td.innerHTML.slice(1))
+        }
+        //计算总价,手动放回
+        totalTd.innerHTML=`¥${total.toFixed(2)}`
+      }
+    }
+</script>
+</html>

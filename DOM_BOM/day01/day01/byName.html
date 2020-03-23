@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  用户名: <input type="text" name="uname"><br>
+  爱好: <label for=""><input type="radio" name="favs" value="swimming">游泳</label>
+  <label for=""><input type="radio" name="favs" value="running">跑步</label>
+  <label for=""><input type="radio" name="favs" value="music">音乐</label>
+</body>
+<script>
+  //表单元素的查找
+  //表单元素查找name名为favs的元素
+  var rads=document.getElementsByName("favs")
+  console.log(rads)
+  //查找name名为unamede 元素 要取出一个文本框元素是必须加[下标]
+  var input=document.getElementsByName("uname")//同下结果后面最加[0]
+  console.log(input)//input[0]因为返回的是类数组对象,我们就可以用下标取出值
+</script>
+</html>

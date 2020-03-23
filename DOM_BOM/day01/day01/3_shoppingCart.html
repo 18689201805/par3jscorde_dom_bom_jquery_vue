@@ -9,6 +9,13 @@
 	}
 	td,th{border:1px solid black}
 	td[colspan="3"]{text-align:right;}
+
+	tfoot>tr>td:last-child{
+		background:yellow;
+	}
+	tbody>tr>td:last-child{
+		background:pink;
+	}
 </style>
 
 </head>
@@ -25,42 +32,129 @@
 		<tbody>
 			<tr>
 				<td>iPhone6</td>
+				<!-- <td class="subtitle">¥4488.00</td> -->
 				<td>¥4488.00</td>
         <td>
           <button>-</button>
           <span>1</span>
           <button>+</button>
         </td>
+				<!-- <td class="subtitle">¥4488.00</td> -->
 				<td>¥4488.00</td>
 			</tr>
 			<tr>
 				<td>iPhone6 plus</td>
+				<!-- <td class="subtitle">¥5288.00</td> -->
 				<td>¥5288.00</td>
 				<td>
           <button>-</button>
           <span>1</span>
           <button>+</button>
 				</td>
+				<!-- <td class="subtitle">¥5288.00</td> -->
 				<td>¥5288.00</td>
 			</tr>
 			<tr>
 				<td>iPad Air 2</td>
+				<!-- <td class="subtitle">¥4288.00</td> -->
 				<td>¥4288.00</td>
         <td>
           <button>-</button>
           <span>1</span>
           <button>+</button>
         </td>
+				<!-- <td class="subtitle">¥4288.00</td> -->
 				<td>¥4288.00</td>
 			</tr>
 		</tbody>
 		<tfoot>
 			<tr>
 				<td colspan="3">Total: </td>
-				<td>¥14064.00</td>
+				<td class="subtitle">¥14064.00</td>
 			</tr>
 		</tfoot>
 	</table>
-  <script src="js/3.js"></script>
+	<!-- <script>
+		//获取id为data所有的元素document.getElementById
+		//自己认为:先用id来查找父元素 再通过接住的父元素的变量来用标签名以及属性名来查找
+		var table=document.getElementById("data");
+		console.log(table)
+		//查找table下的所有button元素使用更快getElementsByTagName 根据标签名查找元素
+		var btn=table.getElementsByTagName("button");//table父元素 button为子元素
+		console.log(btn);
+		//按class查找对应的元素getElementsByClassname()
+		var td=table.getElementsByClassName("subtitle")
+		console.log(td);
+	</script> -->
+	<script>
+		//购物车功能
+		//功能一:点击+/-,数量变化
+		//今后做任何一种DOM效果的固定套路:4步
+		//1.先查找要触发的元素
+				//自己认为:先用id来查找父元素 再通过接住的父元素的变量,来使用后面的标签名以及属性名来查找
+				var table=document.getElementById("data");
+				//查找table下的所有button元素使用更快getElementsByTagName 根据标签名查找元素
+				var btns=table.getElementsByTagName("button");//得到类数组对象可以为后面进行遍历
+		//2.提前为元素绑定事件处理函数
+				//2.本例中:遍历找到每个对象,每遍历一个按钮对象,就为当前按钮绑定一个处理函数
+					for(var btn of btns){
+						btn.onclick=function(){
+							//this.innerHTML="❀"//每次遍历btns都会把元素button赋值给变量btn,就相当于直接给遍历到的button绑定一个单击事件,所以每当点击触发的元素是,this就会指向当前触发事件的元素变成"❀""
+		//3.查找要修改的元素
+							//本例中,点击按钮要修改旁边的span//所以应该找按钮爹的所有孩子中第二个孩子
+							var span=this.parentNode.children[1];//this同上解释;parentElement等于Node
+		//4.修改元素
+							//4.1先取出span中现在的值,转为整数(凡是页面的一切都是字符串)
+							var n=parseInt(span.innerHTML)//获取span的内容
+							//4.2如果点的是+,就span的值+1,否则就span的值-1;
+							if(this.innerHTML=="+"){
+								n++;
+							}else if(n>1){
+								//只有当n大于1的时候才可以减一
+								n--;
+							}
+							//4.3把修改后的的新值,手动放回span内容中(因为从页面上拿到的一切,副本,按值传递,所以修改副本,不影响页面显示,要修改页面显示必须要手动放回)
+							span.innerHTML=n
+
+
+
+							//功能二:数量改,小计跟着改
+							//同一个事件中,修改 3和4步即可
+							//3.查找要修改的元素 本例中应该查找当前按钮的父元素(td) 的下一个兄弟(td)
+							var subTd=this.parentNode.nextElementSibling;
+							//4.修改元素:小计=数量*单价 所以还是得找当前按钮的父元素(td)前一个兄弟(td)
+								var price=parseFloat(
+									this.parentNode
+											.previousElementSibling
+											.innerHTML
+											.slice(1)//删除人民币符号
+								)
+								//计算小计
+							var subtotal=price*n;
+							//再放回最后一个td中
+							subTd.innerHTML=`¥${subtotal.toFixed(2)}`
+
+
+							//功能三:小计改,总计也要跟着改
+							//同一个事件中,修改 DOM 3和4步即可
+							//3.查找要修改的元素
+								//找到tfoot最后一个的的小计
+								var totalTd=table.querySelector("tfoot>tr>td:last-child");
+								console.log(totalTd)
+							//4.找到tbody最后一个td 小计
+								var subTds=table.querySelectorAll("tbody>tr>td:last-child");
+								console.log(subTds)
+								var total=0;
+								for(var td of subTds){
+									total+=parseFloat(td.innerHTML.slice(1))
+								}
+								//将计算好的总价放回总价td中
+								totalTd.innerHTML=`¥${total.toFixed(2)}`
+
+						}
+					}
+
+	</script>
+  <!-- <script src="js/3.js"></script> -->
 </body>
 </html>
