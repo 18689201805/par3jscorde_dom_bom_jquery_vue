@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //overload(一个函数执行多种方式的) 定义一个函数,根据传参的不同,函数选择不同的执行方式
+    //支付函数 (手机,现金,刷卡)  
+    //每个函数都存在着一个类数组对象arguments 
+    var pay=function(){
+      if(arguments.length==0){
+        console.log("手机支付....");
+      }else if(arguments.length==1){
+        console.log(`现金支付${arguments[0]}元`)
+      }else{
+        console.log(`您的卡号${arguments[0]},消费了${arguments[1]}元`)
+      }
+    }
+    pay();
+    pay(100);
+    pay(9825,300)
+
+    //用overload 计算任意数之和
+    var add=function(){
+      var sum=0;
+      for(var i=0;i<arguments.length;i++){
+        sum+=arguments[i];
+      }
+      console.log(sum)
+    }
+    add(2,4,5,6,7)
+    add(43,50)
+  </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+ <head>
+	<meta charset="UTF-8">
+	<title>实现带样式的表单验证</title>
+	<style>
+		table{width:700px}
+		/*��Ԫ���µĵ�1������n�������һ��td��Ԫ��*/
+		td:first-child{width:60px}
+		/*IE��֧��nth-child*/
+		td:nth-child(2){width:200px}
+		/*IE*/
+		td:first-child+td{width:200px}
+		/*IE��֧��--���Կ��ܿ���������
+		td:last-child{width:340px}*/
+		td span{color:red}
+
+		.vali_info{/* ҳ���ʼ����֤��Ϣ����ʾ */
+			display:none;
+		}
+		.txt_focus{/*���ı����ý���ʱ����*/
+			border-top:2px solid black;
+			border-left:2px solid black;
+		}/*���ı���ʧȥ����ʱ����*/
+
+		.vali_success,.vali_fail{
+			background-repeat:no-repeat;
+			background-position:left center;
+			display:block;
+		}
+		/* ��֤��Ϣ����֤ͨ��ʱ����ʽ */
+		.vali_success{
+				background-image:url("day03/images/ok.png");
+			padding-left:20px;
+			width:0px;height:20px;
+			overflow:hidden;
+		}
+		/* ��֤��Ϣ����֤ʧ��ʱ����ʽ */
+		.vali_fail{
+				background-image:url("day03/images/err.png");
+				border:1px solid red;
+				background-color:#ddd;
+				color:Red;
+				padding-left:30px;
+		}
+
+
+	</style>
+ </head>
+ <body>
+	<form id="form1">
+		<h2>增加管理员</h2>
+		<table>
+			<tr>
+				<td>姓名：</td>
+        <td>
+					<input name="username"/>
+					<span>*</span>
+				</td>
+				<td>
+					<div class="vali_info">
+						10个字符以内的字母、数字或下划线的组合
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td>
+					<input type="password" name="pwd"/>
+					<span>*</span>
+				</td>
+				<td>
+					<div class="vali_info">6位数字</div>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="2">
+          <!-- <input type="submit" value="保存"/> -->
+          <input type="button" value="保存"/>
+          <input type="reset" value="重填"/>
+				</td>
+			</tr>				
+	    </table>
+	</form>
+<script>
+//DOM 4步:
+//1. 查找触发事件的元素
+	var input=document.getElementsByName("username")[0]
+	var upwd=document.getElementsByName("pwd")[0]
+	var submit=document.querySelector("[type='button']")
+	console.log(submit)
+//2. 绑定事件处理函数
+	upwd.onfocus=
+	input.onfocus=function(){
+		//3. 查找要修改的元素
+		this.parentNode.nextElementSibling.children[0]
+		//4. 修改元素
+		.className=""
+	}
+	//共用函数进行封装
+	function vali(reg){
+		//3. 查找要修改的元素
+		var div=this.parentNode.nextElementSibling.children[0];
+		var result=reg.test(this.value.trim())//返回true or false
+				if(result==true){
+					div.className="vali_success";
+					return true
+				}else{
+					div.className="vali_fail";
+					return false
+				}
+				//三目
+				div.className=result?"vali_success":"vali_fail";
+				console.log(result)
+	}	
+	input.onblur=function(){
+	//4. 修改元素
+			//4.1验证为文本框的规则
+				var reg=/^\w{5,10}$/;
+				vali.call(this,reg)
+				// var result=reg.test(this.value.trim())//返回true or false
+				// // if(result==true){
+				// // 	div.className="vali_success";
+				// // }else{
+				// // 	div.className="vali_fail";
+				// // }
+				// //三目
+				// div.className=result?"vali_success":"vali_fail";
+				// console.log(result)
+	}
+	upwd.onblur=function(){
+		var reg=/^\w{6,}$/
+		vali.call(this,reg)
+	}
+	submit.onclick = function() {
+		var bool = vali.call(input, /^\w{1,10}$/);
+		if (bool == false) {
+				input.focus();
+		} else {
+				var bool = vali.call(upwd, /^\d{6,}$/);
+				if (bool == false) {
+						upwd.focus();
+				} else {
+						alert("保存成功!")
+				}
+		}
+
+  }
+
+</script>
+
+ </body>
+</html>

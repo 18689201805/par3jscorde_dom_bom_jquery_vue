@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var a=10;
+function fun1(){
+  //var a //局部作用域
+  console.log(a);//undefined
+  var a=100;
+  a++;
+  console.log(a);//101
+}
+fun1();//?   ?  
+console.log(a);//? 10 
+
+var b=10;
+function fun2(){
+  console.log(b);//局部没有var 找全局 10
+  b=100;
+  b++;
+  console.log(b);//101
+}
+fun2();//?   ?  
+console.log(b);//?  //都是全局所以输出101 
+
+var c=10;
+function fun3(c){
+  console.log(c); //没有var 但是有形参所以有局部变量 c 10
+  c=100;
+  c++;
+  console.log(c);//101
+}
+fun3(c);//?   ?  
+console.log(c);//? 10
+</script>
+</body>
+</html>	

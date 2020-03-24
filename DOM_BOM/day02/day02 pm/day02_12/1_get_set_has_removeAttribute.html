@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<a id="a1" class="btn" href="http://tmooc.cn">go to tmooc</a>
+<script>
+//查找id为a1的元素
+var a1=document.getElementById("a1");
+//获得a1的href属性值
+console.log(a1.getAttribute("href"));
+//想修改a1的target属性为_blank
+a1.setAttribute("target","_blank");
+//判断如果a1没有title属性，就给a1添加title属性
+console.log(a1.hasAttribute("title"));//false
+if(a1.hasAttribute("title")==false){
+  a1.setAttribute("title","欢迎访问tmooc");
+}
+console.log(a1.hasAttribute("title"));//true
+//想移除a1的id属性
+a1.removeAttribute("id");
+
+//想获得a1的class属性值
+console.log(a1.getAttribute("class"))
+//想修改a1的class为alert
+a1.setAttribute("class","alert");
+</script>
+</body>
+</html>

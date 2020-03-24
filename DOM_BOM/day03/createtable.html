@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      width:600px;
+      border-collapse:collapse;
+      text-align:center;
+    }
+    td,th{border: 1px solid #ccc}
+
+  </style>
+</head>
+<body>
+  <h1>动态生成表格</h1>
+  <div id="data">
+    <table>
+      <tr>
+        <th>员工姓名</th>
+        <th>薪资</th>
+        <th>年龄</th>
+        <th>删除</th>
+      </tr>
+    </table>
+</div>
+</body>
+
+ <!-- <script>
+  var json=[
+    {"ename":"Tom", "salary":11000, "age":25},
+    {"ename":"John", "salary":13000, "age":28},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25}
+  ];
+  var table=document.querySelector("#data>table");
+  var tbody=document.createElement("tbody")
+  //将tbody添加到table中
+  table.appendChild(tbody);
+  //遍历json数组
+  for (var emp of json){
+    //每遍历一个员工对象,就创建一个并添加到tbody中
+    var tr=document.createElement("tr")
+    tbody.appendChild(tr);
+    //遍历员工对象中的属性
+    for(var key in emp){
+      //每遍历一个属性就创建一个td加入tr
+      var td=document.createElement("td");
+      tr.appendChild(td);
+      td.innerHTML=emp[key];
+    }
+
+  }
+  console.log(table)
+</script> -->
+ <script>
+  var json=[
+    {"ename":"Tom", "salary":11000, "age":25},
+    {"ename":"John", "salary":13000, "age":28},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25}
+  ];
+  var table=document.querySelector("#data>table");
+  var tbody=document.createElement("tbody")
+  //将tbody添加到table中
+  table.appendChild(tbody);
+  //遍历json数组
+  for (var emp of json){
+    //每遍历一个员工对象,就创建一个并添加到tbody中
+    var tr=document.createElement("tr")
+    tbody.appendChild(tr);
+
+    //var tr=tbody.insertRow()//从结尾正序插入  简写
+
+    //var tr=tbody.insertRow(0)//从开头倒叙插入 简写
+
+    //遍历员工对象中的属性
+    for(var key in emp){
+      //每遍历一个属性就创建一个td加入tr
+      // var td=document.createElement("td");
+      // tr.appendChild(td);
+
+      var td=tr.insertCell()
+
+      td.innerHTML=emp[key];
+    }
+    var td=tr.insertCell()
+    var btn=document.createElement("button")
+    btn.innerHTML="×";
+    td.appendChild(btn);
+    btn.onclick=function(){
+      //this.innerHTML="❀"
+      var tr=this.parentNode.parentNode
+      // var ename=tr.cells[0].innerHTML;  
+       var ename=tr.children[0].innerHTML;  
+      //console.log(ename);
+      var result=confirm(`是否继续删除${ename}`)
+      if(result==true)table.deleteRow(tr.rowIndex);
+    }
+  }
+  console.log(table)
+</script>
+<!-- <script>
+  var json=[
+    {"ename":"Tom", "salary":11000, "age":25},
+    {"ename":"John", "salary":13000, "age":28},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25},
+    {"ename":"Mary", "salary":12000, "age":25}
+  ];
+  //先创建一个文档片段对象
+  var frag=document.createDocumentFragment()
+  //遍历json数组
+  for (var emp of json){
+    //每遍历一个员工对象,就创建一个并添加到tbody中
+    var tr=document.createElement("tr")
+    frag.appendChild(tr);
+    //遍历员工对象中的属性
+    for(var key in emp){
+      //每遍历一个属性就创建一个td加入tr
+      var td=document.createElement("td");
+      tr.appendChild(td);
+      td.innerHTML=emp[key];
+    }
+  }
+  //查找table中的tbody
+  var tbody=document.querySelector("#data>table>tbody");
+  //将文档片段一次性添加到tbody中
+  tbody.appendChild(frag);
+</script> -->
+</html>

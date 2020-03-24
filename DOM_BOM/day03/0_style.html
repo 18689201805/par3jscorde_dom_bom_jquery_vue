@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1{
+      background-color:red;
+    }
+  </style>
+</head>
+<body>
+<h1 id="h1" style="color:yellow">Welcome dingding</h1>
+<script>
+var h1=document.getElementById("h1");
+//想获取h1的内联样式color
+console.log(h1.style.color);
+//想获得内部样式表中h1的background-color
+console.log(h1.style.backgroundColor);
+//想获得浏览器默认样式表中的h1的font-size
+console.log(h1.style.fontSize);
+</script>
+</body>
+</html>

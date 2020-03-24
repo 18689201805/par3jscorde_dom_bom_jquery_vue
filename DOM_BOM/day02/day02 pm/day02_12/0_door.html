@@ -1,0 +1,45 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>读取并修改元素的内容</title>
+<meta charset="utf-8" />
+<style>
+	div{float:left; height: 100px; line-height: 100px; }
+	#d1,#d3{ background-color: #ccff00; }
+	#d2{ cursor: pointer; background-color: #ffcc00; }
+</style>
+</head>
+<body>
+<div id="d1">树形列表</div>
+<div id="d2">&lt;&lt;</div>
+<div id="d3">内容的主体</div>
+<script>
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中:点击d2，让d1切换显示隐藏，所以先查找id为d2的元素
+document.getElementById("d2")
+//2. 绑定事件处理函数
+.onclick=function(){
+	//3. 查找要修改的元素
+	//本例中: d1切换显示隐藏，所以应该查找d1
+	var d1=document.getElementById("d1");
+	//4. 修改元素
+	//小技巧: 当判断元素是显示还是隐藏时，应该先判断元素display是否为null。
+	//因为第一次元素上暂时没有display:block，如果先判断display:block，也会被误认为正处于隐藏状态
+	//如果d1是隐藏的
+	if(d1.style.display==="none"){
+		//就让d1显示
+		d1.style.display="block";
+		//同时让当前d2的内容变为<<
+		this.innerHTML="&lt;&lt;";
+	}else{//否则如果d1是显示的
+		//就让d1隐藏
+		d1.style.display="none";
+		//同时让当前d2的内容变为>>
+		this.innerHTML="&gt;&gt;";
+	}
+}
+
+</script>
+</body>
+</html>

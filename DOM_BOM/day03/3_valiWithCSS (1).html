@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>实现带样式的表单验证</title>
+<style>
+table{width:700px}
+td:first-child{width:60px}
+td:nth-child(2){width:200px}
+td:first-child+td{width:200px}
+td span{color:red}
+.vali_info{
+	display:none;
+}
+.txt_focus{
+	border-top:2px solid black;
+	border-left:2px solid black;
+}
+.vali_success,.vali_fail{
+	background-repeat:no-repeat;
+  background-position:left center;
+	display:block;
+}
+.vali_success{
+    background-image:url("../images/ok.png");
+	padding-left:20px;
+	width:0px;height:20px;
+	overflow:hidden;
+}
+.vali_fail{
+	background-image:url("../images/err.png");
+	border:1px solid red;
+	background-color:#ddd;
+	color:Red;
+	padding-left:30px;
+}
+</style>
+</head>
+<body>
+<form id="form1">
+	<h2>增加管理员</h2>
+	<table>
+		<tr>
+			<td>姓名：</td>
+			<td>
+				<input name="username"/>
+				<span>*</span>
+			</td>
+			<td>
+				<div class="vali_info">
+					10个字符以内的字母、数字或下划线的组合
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>密码：</td>
+			<td>
+				<input type="password" name="pwd"/>
+				<span>*</span>
+			</td>
+			<td>
+				<div class="vali_info">6位数字</div>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan="2">
+				<input type="submit" value="保存"/>
+				<input type="reset" value="重填"/>
+			</td>
+		</tr>				
+	</table>
+</form>
+<script>
+//先做文本框获得焦点时，显示提示
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中: 查找name属性=username的一个文本框元素
+var txtName=document.getElementsByName("username")[0]
+//2. 绑定事件处理函数
+//      当获得焦点时
+txtName.onfocus=function(){
+	//this->当前正在触发事件的当前文本框对象
+	//3. 查找要修改的元素
+	//本例中: 查找当前文本框的爹的下一个兄弟的第一个孩子
+	this.parentNode.nextElementSibling.children[0]
+	//4. 修改元素
+	//本例中: 脱掉隐身斗篷vali_info
+	.className=""
+}
+
+//再做文本框失去焦点时，验证文本框内容并修改提示信息
+//DOM 4步
+//1. 查找触发事件的元素(已找到txtName)
+txtName
+//2. 绑定事件处理函数
+//当失去焦点时
+.onblur=function(){
+	//this->当前正在触发事件的当前文本框对象
+	//3. 查找要修改的元素
+	var div=this.parentNode.nextElementSibling.children[0]
+	//4. 修改元素
+	//先定义正则表达式描述文本框的规则
+	var reg=/^\w{1,10}$/;
+	//先验证当前文本框的内容是否符合规则
+	var result=reg.test(this.value.trim());
+	//基础一般的同学: 
+	if(result==true){//如果验证通过
+		//就修改旁边div的class为vali_success
+		div.className="vali_success";
+	}else{//否则如果验证不通过
+		//就修改旁边div的class为vali_fail
+		div.className="vali_fail";
+	}
+	//基础好的同学:
+	//div.className=result?"vali_success":"vali_fail";
+}
+</script>
+ </body>
+</html>

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>全选和取消全选</title>
+</head>
+<body>
+<h2>管理员列表</h2>
+<table border="1px" width="500px">
+	<thead>
+	<tr>
+		<th><input type="checkbox"/>全选</th>
+		<th>管理员ID</th>
+		<th>姓名</th>
+		<th>操作</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><input type="checkbox"/></td>
+			<td>1</td>
+			<td>Tester</td>
+			<td>修改 删除</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"/></td>
+			<td>2</td>
+			<td>Manager</td>
+			<td>修改 删除</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"/></td>
+			<td>3</td>
+			<td>Analyst</td>
+			<td>修改 删除</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"/></td>
+			<td>4</td>
+			<td>Admin</td>
+			<td>修改 删除</td>
+		</tr>
+	</tbody>
+</table>
+<script>
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中:查找table>thead下的input
+var chbAll=document.querySelector("table>thead input")
+//2. 绑定事件处理函数
+chbAll.onclick=function(){
+	//3. 查找要修改的元素
+	//本例中: 要修改tbody下每行第一个td中的input
+	var inputs=document.querySelectorAll("table>tbody>tr>td:first-child>input");
+	//4. 修改元素
+	//遍历inputs中每个checkbox
+	for(var chb of inputs){
+		//让每个checkbox的checked属性和chbAll的checked保持一致！
+		chb.checked=chbAll.checked;
+	}
+}
+
+//DOM4步
+//1. 查找触发事件的元素
+//本例中:查找tbody下每行第一个td中的input
+var inputs=document.querySelectorAll("table>tbody>tr>td:first-child>input");
+//2. 绑定事件处理函数
+//本例中: 遍历inputs中每个checkbox，为每个checkbox都绑定单击事件
+for(var chb of inputs){
+	chb.onclick=function(){
+		//3. 查找要修改的元素（chbAll已经找到了）
+		//4. 修改元素
+		//先查找tbody下有没有未选中的checkbox
+		var checked=document.querySelector("table>tbody>tr>td:first-child>input:not(:checked)");
+		//如果tbody中没找到未选中的checkbox，则chbAll就选中
+		if(checked==null){
+			chbAll.checked=true
+		}else{//否则如果tbody中找到了未选中的checkbox，则chbAll就不选中
+			chbAll.checked=false
+		}
+	}
+}
+</script>
+</body>
+</html>

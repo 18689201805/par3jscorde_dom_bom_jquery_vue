@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<input type="checkbox" id="chb1" >同意
+<script>
+document.getElementById("chb1")
+.onclick=function(){
+  console.log(this.checked);
+  alert(this.checked==true?"我同意":"我不同意")
+  //错误做法: 
+  // console.log(this.getAttribute("checked"));
+  // alert(this.getAttribute("checked")==true?"我同意":"我不同意")
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  //创建一个a标签
+  var a=document.createElement("a");
+  a.href="http://www.tmooc.cn";
+  a.innerHTML="go to tmooc"
+  console.log(a);
+  //追加到DOM树下指定的父元素下
+  document.body.appendChild(a);
+
+  //创建一个文本框
+  var input=document.createElement("input");
+  //文本框出现在a之前
+  //document.body.insertBefore(input,a)
+  //出现在a之后
+  //document.body.appendChild(input)
+  //替换a标签
+  //document.body.replaceChild(input,a)
+
+
+</script>
+</html>

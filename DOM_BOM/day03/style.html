@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1{background-color:rgb(100, 240, 88);}
+  </style>
+</head>
+<body>
+  <h1 id="h1" style="color:rgb(255, 0, 221)">Helloween</h1>
+  <script>
+    //修改一个样式时使用 元素名.style.csss属性="值" 
+    //获取元素的样式时,应使用内置函数:var 变量名即类数组对象=getComputedStyle(元素名)
+    var h1=document.getElementById("h1");
+    //先获得h1的样式对象
+    var style=getComputedStyle(h1)//获取计算后的样式,才可以获取外部/内部/内联样式
+    console.log(style)
+    //获取h1的内联样式color;
+    //console.log(h1.style.color);//只有知道内联样式时,才能这么做//只能获取内联样式
+    console.log(style.color)
+    //获取内部样式表中的h1的background-color
+    //console.log(h1.style.backgroundColor)//获取不了
+    //正确做法
+    var background=style.backgroundColor
+    console.log(background)
+    //获取浏览器默认样式表中的font-size
+    //console.log(h1.style.fontSize)//获取不到
+    //正确做法
+    console.log(style.fontSize)
+  </script>
+</body>
+</html>

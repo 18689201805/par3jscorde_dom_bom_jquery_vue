@@ -1,0 +1,59 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>动态创建表格</title>
+<meta charset="utf-8" />
+<style>
+	table{width:600px; border-collapse:collapse;
+		text-align:center;
+	}
+	td,th{border:1px solid #ccc}
+</style>
+
+</head>
+<body>
+<div id="data">
+  <!-- table>thead>tr>th*3 -->
+  <table>
+    <thead>
+      <tr>
+        <th>员工姓名</th>
+        <th>薪资</th>
+        <th>年龄</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+</div>
+<script>
+var json=[
+  {"ename":"Tom", "salary":11000, "age":25},
+  {"ename":"John", "salary":13000, "age":28},
+  {"ename":"Mary", "salary":12000, "age":25}
+];
+
+//先创建一个文档片段对象
+var frag=document.createDocumentFragment();
+//再遍历json数组中每个员工对象
+for(var emp of json){
+  //每遍历一个员工对象，就创建一个tr，并临时添加到frag中
+  var tr=document.createElement("tr");
+  frag.appendChild(tr);
+  //遍历当前员工对象中每属性
+  for(var key in emp){
+    //每遍历一个属性就创建一个td加入tr中
+    var td=document.createElement("td");
+    tr.appendChild(td);
+    //设置当前td的内容为当前员工对象的当前属性的属性值
+    td.innerHTML=emp[key];
+  }
+}
+//查找table中的tbody
+var tbody=document.querySelector("#data>table>tbody");
+//将文档片段一次性添加到tbody中
+tbody.appendChild(frag);
+</script>
+</body>
+</html>

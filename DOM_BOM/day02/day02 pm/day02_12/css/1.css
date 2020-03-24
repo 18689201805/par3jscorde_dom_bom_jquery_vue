@@ -1,0 +1,17 @@
+li{
+	list-style:none;
+}
+/*所有span默认+号*/
+li span{
+	padding-left: 20px;
+	cursor: pointer;
+  background: url("../images/add.png") no-repeat center left;
+}
+/*所有ul默认隐藏*/
+li ul{display: none; }
+/*为将来的变化定预案*/
+/*如果有span的class变为open，则span自己+号变为-号*/
+.open{ background: url("../images/minus.png") no-repeat center left; }
+/*span旁边的ul跟着span一起由隐藏变为显示*/
+.open+ul{ display: block; }
+/*结果: 将来只要修改span一个元素的className为open，就能同时让span变为-，同时让span旁边的ul显示出来*/

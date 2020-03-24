@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//想创建一个a元素，添加到body中
+//1. 创建一个空元素a
+var a=document.createElement("a");
+//2. 为新的元素添加必要属性
+a.href="http://tmooc.cn";
+a.innerHTML="go to tmooc";
+console.log(a);
+//3. 追加到DOM树上指定父元素下
+document.body.appendChild(a);
+
+//又想创建一个文本框: 
+var input=document.createElement("input");
+//希望文本框出现在a之前
+//document.body.insertBefore(input,a);
+//希望文本框出现在a之后
+//document.body.appendChild(input)
+//希望文本框替换a
+//document.body.replaceChild(input,a)
+</script>
+</body>
+</html>

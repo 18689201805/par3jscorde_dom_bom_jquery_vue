@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a id="a1" class="btn" href="http:www.tmooc.com">go to tmooc</a>
+</body>
+<script>
+  //新的HTML DOM简写  每一个元素window都会创建一个对象{}里面全都是属于该标签的所有属性,若没有定义的属性会以""形式存在到对象中,
+  //所以添加/查找属性时可用 
+  //.属性名  .属性名=值
+  //ex a1.target a1.target="_self"
+  //但移动端兼容不好还是得记住核心DOM四个函数getAttribute setAttribute hasAttribute removeAttribute `
+  //特例html 的class的属性
+  //今后只要修改class属性必须更名为className
+  // ex: a1.class是错的 a1.className正确的 修改时等效修改class
+
+  var a1=document.getElementById("a1");
+  //获得a1的href属性值
+  console.log(a1.href);
+  
+  //添加属性_blank _self target
+  a1.target="_bank";
+  console.log(a1.target)
+  
+  //如果title属性,就给a添加属性title
+  console.log(a1.title!=="")//false
+  if(a1.title==""){
+    a1.title="欢迎访问tmooc"
+  }
+  console.log(a1.title!=="")
+  //修改class属性
+  a1.className ="alert"
+  //获得class内容
+  console.log(a1.getAttribute("class"))
+  //移除属性id
+  //a1.removeAttribute("id")
+</script>
+</html>

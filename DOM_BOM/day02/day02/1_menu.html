@@ -1,0 +1,76 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>1. 实现伸缩二级菜单</title>
+<meta charset="utf-8" />
+<style>
+	li{
+		list-style:none;
+	}
+	li span{
+		padding-left: 20px;
+		cursor: pointer;
+		background: url("../images/add.png") no-repeat center left;
+	}
+	/* 所有ul默认隐藏 */
+	li ul{display: none; }
+	/* 为将来变化定预案 */
+	/* 如果有span的class变为span 则span自己+变减号 */
+	.open{ background: url("../images/minus.png") no-repeat center left; }
+	/* 如果span旁边的ul跟着span一起由隐藏变为显示 */
+	.open+ul{ display: block; }
+	/* 结果:将来只要修改span一个元素的classClassName为open,就能让span变为－ */
+</style>
+
+</head>
+<body>
+	<ul class="tree">
+		<li>
+			<span class="open">考勤管理</span>
+			<ul>
+				<li>日常考勤</li>
+				<li>请假申请</li>
+				<li>加班/出差</li>
+			</ul>
+		</li>
+		<li><span>信息中心</span>
+			<ul>
+				<li>通知公告</li>
+				<li>公司新闻</li>
+				<li>规章制度</li>
+			</ul>
+		</li>
+		<li><span>协同办公</span>
+			<ul>
+				<li>公文流转</li>
+				<li>文件中心</li>
+				<li>内部邮件</li>
+				<li>即时通信</li>
+				<li>短信提醒</li>
+			</ul>
+		</li>
+	</ul>
+  <script>
+		//手风琴效果 同一个效果只有一个菜单可以打开
+		//查找触发事件的元素
+		var spans=document.querySelectorAll("ul.tree>li>span")
+		//console.log(span)
+		//为触发事件的元素绑定事件处理函数
+		for(var span of spans){
+			span.onclick=function(){
+				//查找修改元素
+				//本例中点击一个span会影响两个span
+				var openSpan=document.querySelector("ul.tree>li>span.open")//根据需求同一个时刻只有一个打开
+				console.log(openSpan)
+				//修改元素
+				//自己开别关
+				this.className="open"
+				if(openSpan!=null){
+					openSpan.className=""
+				}
+			}
+		}
+		
+	</script>
+</body>
+</html>

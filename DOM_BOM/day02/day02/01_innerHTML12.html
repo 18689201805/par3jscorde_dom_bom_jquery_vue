@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="p1">来自<a href="javascript:;">&lt;&lt;路透社&gt;&gt;</a>的消息</p>
+  <p id="p2">来自<a href="javascript:;">&lt;&lt;新华社&gt;&gt;</a>的消息</p>
+  <input type="text" id="txt1">
+  <button id="btn">百度一下</button>
+  <p></p>
+</body>
+<script>
+
+  //innerHTML与textContent的区别
+  //1.innerHTML
+  //查找元素
+ // var p1=document.getElementById("p1");
+  console.log(p1.innerHTML)//会把标签名还有符号一起打印
+  //p1.innerHTML//返回页面时标签名会被浏览器编译
+
+  //textContent
+  //获取标签内的文字内容textContent
+  var p2=document.getElementById("p2");
+  console.log(p2.textContent)//只打印内容即文本
+  //返回给浏览器是不会被编译
+  p1.textContent=`<p id="p1">来自<a href="javascript:;">&lt;&lt;路透社&gt;&gt;</a>的消息</p>`//返回页面是不会被编译,写什么就显示什么
+  
+
+  //DOM四步
+  //查找要触发的元素
+  var btn=document.getElementById("btn")
+  //为触发的元素绑定事件处理函数
+  btn.onclick=function(){
+    //查找要修改的元素
+    //var txt=document.getElementById("txt1")
+    var txt=btn.previousElementSibling
+    var txt1=btn.nextElementSibling
+    //修改元素
+    //document.wirte(`<h2>查找的内容为:${txt.value.trim()}</h2>`) //trim()去掉两端的空格 获取表单元素的值必须用:value
+    txt1.innerHTML=`<h2>查找的内容为:${txt.value.trim()}</h2>`
+  }
+</script>
+</html>
