@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //用闭包创建取号机
+    var num=function(){
+      var n=0;
+      return function(){
+        return n++
+      }
+    }
+    var addNum=num();
+   console.log(addNum());
+   console.log(addNum());
+   console.log(addNum());
+   console.log(addNum());
+   //保管钱
+   var parent=function(){
+     var total=1000;
+     return function(money){
+      return total-=money;
+     }
+   }
+   var pay=parent();
+   console.log(pay(100))
+   console.log(pay(100))
+   //笔试题
+  
+   var fun=function(){
+     var n=999;
+     nAdd=function(){n++}
+     return function(){console.log(n)}
+   }
+   var funs=fun();
+   //funs=function(){}
+   //nAdd=function(){n++}
+   //返回了两个孩子,一个是顺产,一个是剖腹产
+   //因为
+   //funs();//999
+   //nAdd();
+   //funs();//1000
+
+   fun()();//999
+   nAdd();
+   fun()();//999
+   funs();//999
+
+   
+
+  </script>
+</body>
+</html>

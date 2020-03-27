@@ -21,6 +21,7 @@
 }
 #container{
 	position: relative;
+	
 }
 #content1,#content2,#content3{
 	width: 300px;
@@ -47,7 +48,7 @@
 <div class="tabs">
   <ul id="tab">
     <!--         让a什么也不干-->
-    <li><a href="javascript:;" data-click="tab" data-div="content1">10元套餐</a></li>
+   <li><a href="javascript:;" data-click="tab" data-div="content1">10元套餐</a></li>
     <li><a href="javascript:;" data-click="tab" data-div="content2">30元套餐</a></li>
     <li><a href="javascript:;" data-click="tab" data-div="content3">50元包月</a></li>
   </ul>
@@ -77,8 +78,10 @@ for(var tab of tabs){
     //3. 查找要修改的元素
     //本例中: 从当前按钮自己身上取出对应div的id，用id去找自己对应的div
     var id=this.getAttribute("data-div");
+	console.log(id);
           //this.dataset.div
     var div=document.getElementById(id);//因为id是变量所以不加""
+	console.log(div);
     //4. 修改元素
     //本例中: 让当前div在最上边，z-index最大！
     //先将zIndex变量值+1

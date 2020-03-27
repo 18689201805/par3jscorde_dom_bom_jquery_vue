@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script>
+    //浅克隆
+    //定义一个克隆函数 浅克隆只能克隆当前的属性不能克隆子对象里面的内容 即属性:{}
+    var clone=function(oldObj){
+      //判断传参是是否为空
+      if(oldObj==null){return null};
+      //判断传参时是否为对象
+      if(typeof oldObj!=="object"){return oldObj}
+      //判断传参时是否为数组 若是则输出[] 否则{}
+      var newObj=Array.isArray(oldObj)?[]:{};
+      //遍历传参的对象,并且赋值个新德对象
+      for(var key in oldObj){
+        newObj[key]=oldObj[key]
+      }
+      return newObj;
+    }
+    var emp={uname:"lilei",eage:12,instr(){console.log(`我叫${this.uname},今年${this.eage}岁`)}};
+    var lileiemp=clone(emp);
+    lileiemp.uname="dongdong"
+    console.log(lileiemp);
+    console.log(emp);
+    console.log(lileiemp==emp)
+
+  </script> -->
+  <script>
+    //浅克隆 只能遍历当前对象的属性值,但是不能遍历子对象
+    //创建克隆函数
+    var clones=function(oldObj){
+      //判断形参是否为null
+      if(oldObj==null){return null}
+      //判断形参类型是否为对象
+      if(typeof oldObj!=="object"){return OldObj}
+      //判断形参是否为数组
+       var newObj=Array.isArray(oldObj)?[]:{}
+      //遍历旧对象并赋值给新对象 
+      for(var key in oldObj){
+        newObj[key]=oldObj[key]
+      }
+      return newObj
+    }
+    //var hmm=[1,2,4,5,6]
+    var hmm={uname:"han mei mei",eage:12}
+    var lilei=clones(hmm);
+    console.log(hmm)
+    console.log(typeof lilei)
+    console.log(lilei)
+  </script>
+</body>
+</html>

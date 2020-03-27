@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <h1 id="d1"></h1>
+</body>
+<script>
+  var h1=document.getElementById("d1")
+  window.onresize=function(){
+
+    h1.innerHTML=`
+    窗口的总大小:${window.outerWidth}*${window.outerHeight}<br>
+    文档显示区的宽高:${window.innerWidth}*${window.innerHeight}`
+  }
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //深克隆,不但可以克隆当前的属性,还可以克隆属性的子对象
+    //创建一个函数
+    function deepClone(oldObj){
+      //判断形参是否为null
+      if(oldObj==null){return null};
+      //判断形参是否为对象
+      if(typeof oldObj!=="object"){return oldObj}
+      //创建变量,判断是否为数组 并赋值
+      var newObj=Array.isArray(oldObj)?[]:{};
+      //遍历形参oldObj
+      for(var key in oldObj){
+        newObj[key]=deepClone(oldObj[key])//浅克隆和深克隆的区别就是每次遍历是都调用deepClone()
+      }
+      return newObj;
+    }
+    var emp={
+      ename:"李婷",
+      eage:20,
+      address:{
+        province:"广东",
+        city:"茂名",
+        workcity:"深圳",
+        detailaddre:"龙华新区民治街道23号"
+      }
+    }
+    var lilei=deepClone(emp);
+    console.log(lilei)
+    lilei.address.city="珠海"
+    console.log(emp)//没有重新调用deepClone()导致克隆是指向同一个子对象的地址,造成一改全改
+    //解决:深克隆 在遍历oldObj时重新调用deepClone()遍历每一个属性是否存在子对象
+  </script>
+</body>
+</html>

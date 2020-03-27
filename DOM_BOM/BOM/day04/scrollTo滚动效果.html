@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+        body {
+            height: 2000px;
+        }
+        
+        #toTop {
+            position: fixed;
+            background: pink;
+            bottom: 50px;
+            right: -100px;
+            /* display:none; */
+            overflow: hidden;
+            transition: all .5s linear;
+        }
+        
+        #toTop.show {
+            right: 0px;
+        }
+  </style>
+</head>
+<body>
+   <!-- 获取窗口滚动的宽度,当滚动多少时显示隐藏的内容  回到顶部()scrollTo(0,0)-->
+   <div id="toTop">
+      <a href="javascript:;">返回顶部</a>
+    </div>
+<script>
+    window.onscroll = function() {
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      console.log(scrollTop)
+      if (scrollTop >= 500) {
+          toTop.className = "show"
+      } else {
+          toTop.className = ""
+      }
+    }
+    var a = document.querySelector("#toTop>a")
+    a.onclick = function() {
+        window.scrollTo(0, 0)
+    }
+</script>
+</body>
+</html>

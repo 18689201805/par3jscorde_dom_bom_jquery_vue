@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //按值传递 原始类型在内存总一个变量只能保存一个值,若有新的变量要用已经声明的变量赋值的话,内存会复制一个副本给到另外的一个值,不影响原来的值
+    var a=3;
+    var b=a;
+      b++;
+      console.log(b)//4
+      console.log(a)//3
+    //按值传递,引用类型,数组/对象 因为内存只能保存一个值,所以会生成一个地址,若有其他变量使用同一个数组/对象,内存就会复制一个地址给变量,所以当任意一个变量修改指向同一个地址的对象/数组 所有使用同一个地址都会发生改变
+    var arr=["包子","包子","包子","包子","包子"]
+    var dong=arr;
+    var ran=arr.pop();
+    console.log(ran);
+    console.log(dong)
+   
+  </script>
+</body>
+</html>

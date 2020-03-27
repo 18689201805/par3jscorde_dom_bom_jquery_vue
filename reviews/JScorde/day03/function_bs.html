@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var fun=function(){
+      for(var i=0,arr=[];i<3;i++){
+        arr[i]=function(){console.log(i)}
+      }
+      return arr;//return 之前i=3 
+    }
+    var funs=fun();//循环了3次,循环结束i=3 ,妈妈函数只调用了一次所以就只报了一个红包3
+    funs[0]()//3
+    funs[1]()//3
+    funs[2]()//3
+  </script>
+</body>
+</html>
