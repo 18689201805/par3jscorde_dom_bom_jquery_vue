@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script>
+    //字符串变对象
+    var search="?uname=dingding&upwd=123456&favs=swimming&favs=running&favs=basketball";
+    //创建函数
+    function search2Obj(str){
+      //创建一个空对象
+      var obj={}
+      //字符串截取 去掉?
+      str=str.slice(1);
+      //用正则按&切割为数组
+      var arr=str.split("&")
+      //遍历数组arr每个子字符串
+      for(var s of arr){
+        //按等号切割子字符串然后将切割后的第一部分在变量中key中保存,第二部分保存在value中
+        var [key,value]=s.split("=")//数组解构 下标对下标 [uname,dingding]
+        //如果obj不包含key为下标的属性
+        if(obj[key]===undefined){
+          //强行给obj添加属性,并赋值
+          obj[key]=value;
+        }else{
+          //如果obj已存在下标为key的属性就取出obj[key]的值和新值value 用concat进行拼接,之后在放回obj[key]保存
+          obj[key]=[].concat(obj[key],value)
+        }
+      }
+      console.log(obj);
+    }
+
+    search2Obj(search)
+  </script> -->
+<!-- <script>
+      //字符串变对象
+      var search="?uname=dingding&upwd=123456&favs=swimming&favs=running&favs=basketball";
+      //创建函数
+      function strObj(str){
+        //创建一个空对象接住属性/值
+        var obj={}
+        //截取字符串 去掉?
+        str=str.slice(1);
+        //用split按&切割为数组
+        var arr=str.split("&")
+        //使用for of 进行遍历arr中的子字符串
+        for(var s of arr){
+          //每遍历一个子字符串按=号进行切割split 
+          //并且使用解构获取子数组的值,第一部分的值使用变量key保存,第二部分的值使用value变量保存
+          var [key,value]=s.split("=")
+          //如果obj不包含下标为key的属性就强行添加属性并赋值
+          if(obj[key]===undefined){
+            obj[key]=value;
+          }else{
+            //如果obj已经包含key为下标的属性,就将obj[key]值取出来,并且和新值用concat拼接成数组并重新保存到obj[key]中
+            obj[key]=[].concat(obj[key],value);//新建一个空数组,现将第一个参数(数组)打散,放入新数组中,之后再将第二个新值放入新德数组中
+          }
+        }
+        console.log(obj)
+      }
+      strObj(search)
+</script> -->
+<script>
+   //字符串变对象
+   var str="?uname=dingding&upwd=123456&favs=swimming&favs=running&favs=basketball";
+   //创建一个函数将str传进函中
+   function strObj(str){
+     //创建一个空对象
+     var obj={}
+    //将?去掉
+    str=str.slice(1);
+    //按&分割为数组
+    var arr=str.split("&")
+    for(var s of arr){
+      //按=号分割遍历回来的子数组,使用解构的方法,将第一部分的值保存在key中,将第二部分的值保存到value中
+      var [key,value]=s.split("=");
+      //判断obj[key]===undefined 若true 就强行赋值value  反之则需要使用数组的concat来进行拼接,将就的obj[key]值拿出来和新的值value进行拼接,之后再保存到obj[key]中
+      if(obj[key]===undefined){
+        obj[key]=value
+      }else{
+        obj[key]=[].concat(obj[key],value)
+      }
+    }
+    //return obj
+    console.log(obj)
+   }
+   strObj(str)
+</script>
+</body>
+</html>

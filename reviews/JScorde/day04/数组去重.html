@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script>
+    //数组去重
+    var arr=[1,2,3,5,6,7,8,9,1,4,6,3,7,6,8];
+    //创建一个空对象,把数组的值变成对象的属性,就可以去重了
+    var obj={};
+    for(var i=0;i<arr.length;i++){
+      obj[arr[i]]=1; //点不可以因为会自动翻译为[""]
+    }
+    console.log(obj)
+    //将对象进行遍历,返回的值变成数组的值,另外要创建一个空数组
+    var res=[];
+    var i=0;
+    for(res[i++] in obj){};
+    console.log(res)
+  </script> -->
+<!-- <script>
+  //数组去重
+  var arr=[1,2,3,5,6,7,8,9,1,4,6,3,7,6,8]
+  //遍历数组,将数组的值变成对象的属性,去重第一步
+  //创建一个对象空对象
+  var obj={};//不能放在循环里面
+  for(var i=0;i<arr.length;i++){
+
+    //将遍历的值赋值给对象做属性
+    obj[arr[i]]=1;
+  }
+  //创建一个空数组以及一个变量i=0作为下标,遍历对象obj
+  var arry=[]
+  var i=0;
+  for(arry[i++] in obj){}
+  console.log(arry);
+</script> -->
+<!-- <script>
+  //数组去重
+  var arr=[1,2,3,5,6,7,8,9,1,4,6,3,7,6,8]
+  var obj={};//一个对象不允许有重复的下标 所以用for循环遍历数组的值转变为对象的属性时不允许有相同的属性,出现相同就会替换;
+  for(var i=0;i<arr.length;i++){
+    obj[arr[i]]=1;//将数组的值变成对象的属性
+  }
+  var arry=[];
+  var i=0;
+  for(arry[i++] in obj){}//遍历属性将属性重新放入一个数组中
+  console.log(arry)
+</script> -->
+<script>
+   //数组去重
+   var arr=[1,2,3,5,6,7,8,9,1,4,6,3,7,6,8]
+   //声明一个空对象
+    var obj={};
+    //遍历数组,将数组的值转换为对象的属性
+    for(var i=0;i<arr.length;i++){
+      obj[arr[i]]=1;
+    }
+    //将对象obj转换为数组,创建两个变量,一个空数组,一个是数组的下标++
+    var arr=[];
+    var i=0;
+    //for in 遍历对象
+    for(arr[i++] in obj){}
+    console.log(arr)
+</script>
+</body>
+</html>

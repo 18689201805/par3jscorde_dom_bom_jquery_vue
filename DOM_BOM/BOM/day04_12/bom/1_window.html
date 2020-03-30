@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="height:2500px">
+<h3 id="h3" style="position:fixed; top:0; left:0"></h3>
+<h4 style="position:fixed; top:0; right:0">
+  <p id="h4"></p>
+  <button onclick="window.scrollTo(0,500)">滚动到500</button>
+  <button onclick="window.scrollTo(0,1000)">滚动到1000</button>
+</h4>
+<script>
+  var h3=document.getElementById("h3");
+  var h4=document.getElementById("h4");
+  //     当重新改变大小
+  window.onresize=function(){
+    h3.innerHTML=`
+    窗口总大小: ${window.outerWidth} x ${window.outerHeight}
+    <br/>
+    窗口文档显示区部分大小: ${window.innerWidth} x ${window.innerHeight}`
+  }
+
+  //当滚动条发生滚动时
+  window.onscroll=function(){
+    var scrollTop=document.documentElement.scrollTop
+							  ||document.body.scrollTop;
+
+    h4.innerHTML=`滚动过的距离是: ${scrollTop}`
+  }
+</script>
+</body>
+</html>

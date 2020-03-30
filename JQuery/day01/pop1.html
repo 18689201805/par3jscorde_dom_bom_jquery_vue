@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      position:fixed;
+      top:150px;
+      left:150px;
+      width:200px;
+      height:200px;
+      background-image:url(xiaoxin.gif);
+      background-size:100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="pop"></div>
+</body>
+<script>
+  //获取鼠标的坐标
+  var pop=document.getElementById("pop");
+  pop.onclick=function(e){
+    alert(`
+      距离屏幕左上角:e.screenX:${e.screenX},e.screenY:${e.screenY}
+      距离文档显示区左上角:
+      e.clientX:${e.clientX},e.clientY:${e.clientY}
+      距离当前元素左上角:e.offsetX:${e.offsetX},e.offsetY:${e.offsetY}
+    `)
+  }
+</script>
+</html>

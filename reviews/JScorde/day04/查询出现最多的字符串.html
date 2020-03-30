@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script>
+    //查询出现最多的字符串
+    //创建变量需要查询的字符串
+    var str="halloworld";
+    //创建一个空数组 遍历字符串 把值放入空数组中
+    var arr=[];
+    for(var i=0;i<str.length;i++){
+      //声明变量接收遍历的值
+      var char=str[i];
+      //判读接收的值中是否有重复 没有重复赋值1,有重复++
+      if(arr[char]==undefined){
+        arr[char]=1;
+      }else{
+        arr[char]++
+      }
+    }
+    console.log(arr)
+    //声明变量
+    var maxChar,count=0;
+    //遍历数组
+    for(var key in arr){
+      //如果遍历的值大于count的值,之后就直接赋值给变量,最后输出
+      if(arr[key]>count){
+        maxChar=key;
+        count=arr[key]
+      }
+    }
+    console.log(`出现最多的字符是${maxChar},一共出现${count}次`)
+  </script> -->
+  <!-- <script>
+    //创建一个变量查询出字符出现最多的次数
+    str1="公安局负责维护公共秩序,有问题找公安";
+    //创建一个空数组,遍历字符串 
+    var arry=[];
+    for(var i=0;i<str1.length;i++){
+      //创建变量接收遍历的值
+      var str2=str1[i];
+      //判断数组是否有重复的字符没有+1,有重复++;
+      if(arry[str2]==undefined){
+        arry[str2]=1;
+      }else{
+        arry[str2]++;
+      }
+    }
+    console.log(arry);
+    //创建变量 接收遍历上数组返回的值
+    var maxChar1,count=0;
+    for(var key in arry){
+      //判断返回的值是否大于count
+      if(arry[key]>count){
+        maxChar1=key;
+        count=arry[key];
+      }
+    }
+    console.log(`出现最多次数的字符是:${maxChar1},一共出现了${count}次`)
+  </script> -->
+  <!-- <script>
+  //查找出现最多次数的字符
+  //声明变量
+  var str="youcanyouup"
+  //声明一个空数组 变量字符串
+  var arr=[];
+  for(var i=0;i<str.length;i++){
+    //创建一个变量接收遍历的值
+    var text=str[i];
+    //判断遍历回来的值是否有重复,没有就赋值=1,重复就++
+    if(arr[text]===undefined){
+      arr[text]=1;
+    }else{
+      arr[text]++;
+    }
+  }
+  //声明变量,
+  var maxText,count=0;
+  for(var key in arr){
+    //遍历回来的值做判断,值是否大于count 若大于就可以输出了
+    if(arr[key]>count){
+      maxText=key;
+      count=arr[key];
+    }
+  }
+  console.log(`出现最多次的字符是:${maxText};一共出现了${count}次`)
+</script> -->
+  <script>
+  //查找出现最多次数的字符
+  //声明变量
+  var str="youcanyouup"
+  var arr=[];
+  for(var i=0;i<str.length;i++){
+    //创建变量,保存遍历的值,使得数组变为关联数组
+    var char=str[i]
+    //判断数组的下标是否有重复,有就++,没有就等于1
+    if(arr[char]===undefined){
+      arr[char]=1//强行赋值
+    }else{
+      arr[char]++;
+    }
+  }
+  //创建变量,变量关联数组
+  var maxChar,count=0;
+  for(var key in arr){
+    //判断如果maxChar[key]的值大于count就输出
+    if(arr[key]>count){
+      maxChar=key;
+      count=arr[key]
+    }
+  }
+  console.log(`出现次数最多的是:${maxChar},一共出现了${count}次`)
+  </script>
+</body>
+</html>

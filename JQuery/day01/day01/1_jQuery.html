@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+  <h1>jQuery/$工厂函数</h1>
+  <button id="btn1">click me(0)</button>
+
+  <script>
+    //DOM四步
+    //查找元素
+    // var btn=document.getElementById("btn1")
+    // btn.onclick=function(){
+    //   var n=parseInt(
+    //     this.innerHTML.slice(9)
+    //   )
+    //   n++;
+    //   this.innerHTML=`click me(${n})`
+    //   console.log(n)
+    // }
+    //JQuery是函数库: 
+    //查找 var $btn=$("选择器");
+    //为触发事件绑定事件处理函数:btn.onclick=function(){} jQuery简化为$btn.click(function(){})
+    //查找要修改的元素:之前的 获取当前元素的值 this.innerHTML JQuery简化为 $(this).html()
+    //修改元素 手动将数据返回给页面 之前是 第三步获得的变量.innerHTML=`${}值`jq简化第三步获得的变量.html(`${}`)
+    //或者当前触发的元素this.innerHTML();JQ简写 $(this).html(`值${}`);
+    //因为本例中$(this)重复使用会浪费内存 若需要反复使用$(this)可以创建变量来保存,可以多次使用变量,可以避免内存浪费ex: var $btn=$(this)
+    var $btn1=$("#btn1");
+    $btn1.click(function(){
+      var $btn=$(this);
+      //this原理: 
+      //$btn1本质this的指向DOM家的btn1;因为jq调用时会悄悄的翻译为DOM四步即
+      //$btn1.click()==btn1(找到的是button).onclick=function(){}this指向DOM查找到的button
+      //又因为这样写成this的话,是DOM家孩子就不能使用jQuery简化版的函数,所以要创建一个子对象()在再次包一下才可以继续使用jQuery函数
+      var n=parseInt(
+       $btn.html().slice(-2)
+      )
+      console.log(n)
+      n++;
+      $btn.html(`click me(${n})`)//this的指向$(this)当前对象
+      
+    })
+  
+</script>
+</body>
+</html>

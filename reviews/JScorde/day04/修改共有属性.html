@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //修改原型对象的共有属性
+    //构造函数
+    function Student(sname,eage){
+      this.sname=sname;
+      this.eage=eage;
+    }
+    var lilei=new Student("li lei",12)
+    var hmm=new Student("han mei mei",18)
+    Student.prototype.className="初一二班"//正确的修改方式
+    //错误的修改共有属性
+    //lilei.className="初一2班"//因为本身有了相同的属性,所以lilei的对象与继承再无关系
+    //Student.prototype.className="初三1班"
+    console.log(lilei.className)
+    console.log(hmm.className)
+
+    //若原型对象中没有所需要的方法可以自己自定义
+    //ES中已经内置了11种,不用创建构造函数也可以使用继承来使用原型对象ex;
+    Array.prototype.sum=function(){
+      var total=0;
+      for(var i=0;i<this.length;i++){
+        total+=this[i]
+      }//this指向将来谁调用就指向谁
+      console.log(total)
+    }
+    var arr=[1,2,3,5]
+    var arry=[32,535,200]
+    arr.sum()
+    arry.sum()
+    //内置原型对象的使用
+    Array.prototype.pop();
+    var arr1=[2,4,6,7,8]
+    console.log(arr1.pop())
+    console.log(arr1)
+  </script>
+</body>
+</html>

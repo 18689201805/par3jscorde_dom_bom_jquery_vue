@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{height:2000px;}
+    #toTop{
+      position: fixed;
+      border:1px solid red;
+      bottom:100px;
+      left:-100px; 
+      
+      /* overflow: hidden; */
+      transition: all .5s linear; 
+    }
+  #toTop.show{
+      left:0
+    } 
+  </style>
+</head>
+<body>
+  <div id="toTop">
+    <a href="#">
+      返回顶部
+    </a>
+  </div>
+</body>
+<script>
+  window.onscroll=function(e){
+    var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+    //console.log(scrollTop)
+    //当页面滚动过的距离>=500时就div#toTop显示出来
+    var div=document.getElementById("toTop")
+    if(scrollTop>=500){
+      //div.className="show";
+      //另一种写法id的值可以直接当变量使用
+      toTop.className="show"
+    }else{
+      div.className="";
+    }
+  }
+  var a=document.querySelector("#toTop>a");
+  //e改变html默认行为 event缩写  e.target 使用在事件委托的父元素时, e.targetd替代this,就可以访问当前触发的事件,防止冒泡执行
+a.onclick=function(e){
+  var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+  if(scrollTop==300){
+    scrolltop=300
+  }
+
+  //去掉a标签的#
+  e.preventDefault();
+}  
+</script>
+</html>

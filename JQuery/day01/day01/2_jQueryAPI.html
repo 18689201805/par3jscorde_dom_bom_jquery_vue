@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+  <h1>jQueryAPI特点</h1>
+  <button id="btn1">click me(0)</button>
+  <button id="btn2">click me(0)</button>
+  <button id="btn3">click me(0)</button> 
+  <script>
+    //为三个按钮绑定单击事件，记录单击次数
+    //查找触发的元素
+    //jQuery自带for循环
+    var $btns=$("button")
+    //为元素绑定事件处理函数
+      $btns.click(
+        function(){
+          //因为触发和修改都是使用用一个元素.省略第三步
+          //修改元素
+          var $btn=$(this)//避免浪费内存
+          var n=parseInt(
+            //获取修改元素的内容
+            $btn.html().slice(-2)
+          )
+          n++;
+          //将数据放回页面中
+          $btn.html(`click me(${n})`)
+        } 
+      )
+  </script>
+</body>
+</html>

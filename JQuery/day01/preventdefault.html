@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 去掉a标签的href=# -->
+  <a id="a1" href="#">click me</a>
+</body>
+<script>
+  //e.preventDefault()可以做到
+  var a1=document.getElementById("a1");
+  a1.onclick=function(e){
+    e.preventDefault();
+  }
+</script>
+</html>

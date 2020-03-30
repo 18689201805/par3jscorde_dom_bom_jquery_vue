@@ -14,7 +14,7 @@
       if(oldObj==null){return null};
       //判断传参时是否为对象
       if(typeof oldObj!=="object"){return oldObj}
-      //判断传参时是否为数组 若是则输出[] 否则{}
+      //创建一个变量,判断是否是数组 
       var newObj=Array.isArray(oldObj)?[]:{};
       //遍历传参的对象,并且赋值个新德对象
       for(var key in oldObj){

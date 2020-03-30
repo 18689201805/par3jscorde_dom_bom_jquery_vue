@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="day02/js/jquery-1.11.3.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>JQuery中的选择qi-内容过滤选择器</h1>
+    <button>提交订单</button>
+    <button>submit注册信息</button>
+    <button>马上提交</button>
+    <button>清空重填</button>
+    <hr>
+    <div class="alert" id="alert1">
+      第一个警告框
+    </div>
+    <div class="alert" id="alert2">
+      <span class="close">×</span>
+      第一个警告框
+    </div>
+    <h1></h1>
+    <h1>Welcome</h1>
+  </div>
+</body>
+<script>
+  //选择包含"提交"二字的按钮,变为绿色按钮
+  $("button:contains(提交)").css("background","lightGreen")
+  
+  //选择包含close按钮.alert元素,让它们变成红色警告框
+  $(".alert:has(.close)").css("background","pink")
+
+  //选择不包含close按钮.alert元素,让它们变成红色警告框
+  $(".alert:not(:has(.close))").css("background","lightGreen")
+
+
+  ///选择没有内容的h1，高变为100px, 背景变为橙色
+ // $("h1:empty").css("height",100)
+  //只有jq中才有的福利，如果单位为px，可以不写
+  //$("h1:empty").css("background","orange")
+  $("h1:empty").css({height:100,
+  background:"orange"})
+
+
+  //选择有内容的h1，背景变为浅蓝色
+  $("h1:parent").css("background","lightBlue")
+</script>
+</html>

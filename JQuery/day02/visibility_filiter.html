@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="day02/css/bootstrap.css"/>
+  <script src="day02/js/jquery-1.11.3.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>可见性选择器</h1>
+    <div id="d1" style="display:none">lorem</div>
+    <div id="d2" style="visibility:hidden;">lorem</div>
+    <div id="d3" style="opacity:0;">lorem</div>
+    <input type="hidden" id="d4" name="aa" value="bb">
+
+  </div>
+</body>
+<script>
+  console.log($('div.container>:hidden'))
+</script>
+</html>

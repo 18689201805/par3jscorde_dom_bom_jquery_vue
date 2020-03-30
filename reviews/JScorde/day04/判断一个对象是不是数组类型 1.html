@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //判断一个对象是不是数组一个有7中办法
+    //3中判断父级__proto__ 使用等效的函数,使用已封装的函数
+    //2种判读妈妈 儿子找父级变量名.constructor 或者儿子的妈妈child即变量名 instanceof
+    //1中找对象中的DNA 
+    //es5的判断方法
+    //原始类型 以及判断function 的用typeof
+    var i=9,v="hellow",nu=null,b=true,u;//null是没有意义的对象,是个空地址
+    //引用类型
+    n=function(){}
+    var obj1=[1,2,3],obj2={},obj3=new Date();
+    obj3.__proto__=Array.prototype//前5种有坑,造成误判
+    //1.用__proto__获得对象的爹进行比较
+    console.log(
+      obj1.__proto__==Array.prototype,
+      obj2.__proto__==Array.prototype,
+      obj3.__proto__==Array.prototype
+    );
+    //2.用等效的函数来实现__proto__进行比较即Object.getPrototypeof(变量名)==Array.prototype,
+    console.log(
+      Object.getPrototypeOf(obj1)==Array.prototype,
+      Object.getPrototypeOf(obj2)==Array.prototype,
+      Object.getPrototypeOf(obj3)==Array.prototype 
+    )
+    //3.用封装的函数实现__proto__进行比较
+    //Array.isPrototypeof(变量名)
+    console.log(
+      Array.prototype.isPrototypeOf(obj1),
+      Array.prototype.isPrototypeOf(obj2),
+      Array.prototype.isPrototypeOf(obj3)
+    )
+    //判断妈妈2种:
+    //4.继承父级的constructor属性来找妈妈的构造函数类名进行比较
+    console.log(
+      obj1.constructor==Array,
+      obj2.constructor==Array,
+      obj3.constructor==Array
+    )
+    //5.儿子找妈妈的instanceof 判断
+    console.log(
+      obj1 instanceof Array,
+      obj2 instanceof Array,
+      obj3 instanceof Array
+    )
+    //6.找对象的DNA 内部隐藏的class ,使用call绕过父级继承关系着找顶级父对象
+    console.log(
+      Object.prototype.toString.call(obj1)==="[object Array]",
+      Object.prototype.toString.call(obj2)==="[object Array]",
+      Object.prototype.toString.call(obj3)==="[object Array]",
+    )
+    //7.es5的判断
+    console.log(
+      Array.isArray(obj1),
+      Array.isArray(obj2),
+      Array.isArray(obj3)
+    )
+  </script>
+</body>
+</html>

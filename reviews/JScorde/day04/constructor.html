@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //创建构造函数  
+    //创建学生emp的对象类型的构造函数
+    
+    function Student(ename,eage,className){
+      this.ename=ename,
+      this.eage=eage,
+      this.className=className
+      //禁止写在构造函数内部,因为会重复创建,导致浪费内存
+    }
+    //要使用继承为构造函数创建方法
+    Student.prototype.intr=function(){
+      console.log(`我叫${this.ename},今年${this.eage}岁,现在在${this.className}读书`)
+      //this的指向,将来谁调用就指向谁
+    }
+    //创建对象
+    //调用函数时,内存会把局部变量保存在临时作用域中(ename eage className),还会把this放在临时作用域对象里,因为 new Student 中的new是创建一个新对象 所以this会临时替换成new 并且向磁铁一样强行赋值给新对象
+    var liTin=new Student("li ting",20,"大二3班");
+    var ll=new Student("liang liang","18","高三2班")
+    console.log(liTin)
+    console.log(ll)
+    liTin.intr();
+  </script>
+</body>
+</html>

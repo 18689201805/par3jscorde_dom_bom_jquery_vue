@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		.container {
+			border: 1px solid #aaa;  overflow:hidden;
+		}
+		.block {
+			float: left; margin: 10px;
+			border: 1px solid #aaa;
+			background: #faa;
+			width: 150px; height: 150px;
+		}
+		.block:hover{ box-shadow:0 5px 6px #000; }
+		.close {
+			float:right; padding:5px;
+			font-weight:bold; opacity:.2; cursor: pointer;
+		}
+		.close:hover { opacity: .5; }
+	</style>
+ </head>
+ <body>
+  <h1>添加/删除节点</h1>
+	<button id="add-block">添加区块</button>
+	
+	<div class="container">
+		<!-- <div class="block"> 
+			<span class="close">×</span>
+		</div> -->
+	</div>
+	
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		//查找触发元素
+		$("#add-block")
+		//绑定事件处理函数
+		.click(function(){
+			//查找要修改的元素
+			var $div=$(".container")
+			//修改元素
+			//创建一个新的div
+			var $block=$(`<div class="block"><span class="close">×</span></div>`)
+			//将新的div追加到当前元素的后面
+			//方式一
+			$block.prependTo($div)//修改的是新元素  若修改的是旧元素
+			//$block.appendTo($div)
+			//方式二:
+		  //$div.append($block)//这样写修改的是父元素
+			//$div.prependTo($block)
+			//$block
+						.css(
+							"background",
+							`rgb(${parseInt(Math.random()*256)},${parseInt(Math.random()*256)},${parseInt(Math.random()*256)})`
+						)
+			
+		})
+		//点x删除方块
+		//查找触发元素(事件委托,绑在父元素上)
+		$(".container")
+		//绑定事件处理函数
+		.click(function(e){
+			//用e.target代替this
+			var $x=$(e.target)
+			//判断只允许符合条件的元素执行炒作
+			if($x.html().trim()=="×"){
+				//点x要删除的是父元素
+				$x.parent().remove()
+			}
+
+		})
+	</script>
+	
+ </body>
+</html>

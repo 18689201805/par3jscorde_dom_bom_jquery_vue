@@ -1,0 +1,62 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>取消与利用冒泡</title>
+<meta charset="utf-8"/>
+</head>
+<body>
+<div id="keys">
+	<button>1</button><span>*</span>
+	<button>2</button><span>*</span>
+	<button>3</button><span>*</span>
+	<button>4</button><span>*</span><br>
+	<button>C</button><span>*</span>
+	<button>+</button><span>*</span>
+	<button>-</button><span>*</span>
+	<button>=</button><span>*</span>
+</div>
+<textarea id="sc" style="resize:none;width:200px; height:50px;" readonly></textarea>
+<script>
+//当多个平级button都要绑定相同的单击事件时，应该用事件委托优化
+//事件应该只绑定在父元素上一份即可！
+var keys=document.getElementById("keys");
+//                  event
+//                    ↓
+keys.onclick=function(e){
+	//this->父元素keys
+	//错误: alert(`${this.innerHTML} 疼!`);
+	//正确: e.target代替this
+	//希望只有e.target是按钮时，才能喊疼！别的元素不能喊！
+	if(e.target.nodeName==="BUTTON"){//nodeName每个元素自带的标记自己元素名的属性。属性值是全大写！！！
+		//alert(`${e.target.innerHTML} 疼！`);
+		/*接下来，计算器的正常流程...*/
+		//先查找用于显示屏的id为sc的文本域元素
+		var sc=document.getElementById("sc");
+		//判断e.target的内容
+		switch(e.target.innerHTML){
+			case "C"://如果是C
+				//就清除显示屏sc的内容
+				sc.value="";
+				break;
+			case "="://如果是=
+				//如果显示屏sc的内容不为空
+				if(sc.value!==""){
+					try{//才尝试
+						//将显示屏sc的内容放入全局函数eval()中计算得到计算结果
+						//再将结果放回显示屏sc中
+						sc.value=eval(sc.value);
+					}catch(err){//一旦发生错误，就捕获错误
+						//并将错误信息显示到显示屏sc中
+						sc.value=err;
+					}
+				}
+				break;
+			default: //其余按钮
+				//将e.target的内容追加到显示屏sc的内容末尾
+				sc.value+=e.target.innerHTML;
+		}
+	}
+}
+</script>
+</body>
+</html>

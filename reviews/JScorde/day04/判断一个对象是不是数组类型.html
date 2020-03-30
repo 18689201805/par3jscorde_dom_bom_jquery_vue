@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //判断一个对象是不是数组类型,一共有几种方法
+    //不正确的方法:typeof
+    //五个原始类型
+    var n=10,str="hello",b=true,nu=null,un;//null为对象类型,是空地址没意义的对象
+    //引用类型
+    var f=function(){};//typeof可以判断是不是function
+    var obj1={},obj2=[1,2,3],obj3=new Date();//typeof这能返回object,不能具体返回对象是哪种类型
+    obj1.__proto__=Array.prototype
+    //方法一
+    //用__proto__获得对象的爹 在做比较
+    console.log(
+      obj1.__proto__==Array.prototype,//false
+      obj2.__proto__==Array.prototype,//true
+      obj3.__proto__==Array.prototype//false
+    )
+    //因为__proto__可能被浏览器禁用,所以有等效的函数来完成__proto__的任务:Object.getPrototypeOf(变量名)
+    console.log(
+      Object.getPrototypeOf(obj1)==Array.prototype,//false
+      Object.getPrototypeOf(obj2)==Array.prototype,//true
+      Object.getPrototypeOf(obj3)==Array.prototype//false
+    )
+    //还有一个更直接的函数:Array.prototype.isPrototypeOf(变量名)
+    console.log(
+      Array.prototype.isPrototypeOf(obj1),//false
+      Array.prototype.isPrototypeOf(obj2),//true
+      Array.prototype.isPrototypeOf(obj3),//false
+    )
+    //判断妈妈//因为创建构造函数时会赠一个原型对象即爸爸,爸爸里面含有一个constructor属性,这个constructor属性会会返回给构造函数找妈妈  所有这个判断就是先找到爸爸再找妈妈
+    //用父级原型对象中的constructor属性
+    console.log(
+     obj1.constructor==Array,
+     obj2.constructor==Array,
+     obj3.constructor==Array
+    )
+    //用"child instanceof 妈妈的儿子 爸爸的儿子那也是妈妈的儿子 返回bool值
+    console.log(
+      obj1 instanceof Array,
+      obj2 instanceof Array,
+      obj3 instanceof Array
+    )
+    //以上有5中方法有瑕疵
+    //若在以上5中最上面加上方法:obj1.__proto__=Array.prototype;//坑影响了obj1造成误判
+    //最可靠的方法:
+    //输出对象的NDA,内部隐藏着属性class(Array object Date....)
+    //使用call 绕过继承的父级原型对象(toString输出的是数组的内容),直接找顶级的原型对象的toString输出的是[object Array]
+    console.log(
+      //顶级原型对象的全称+call()==="顶级原型对象输出的内容"
+      Object.prototype.toString.call(obj1)==="[object Array]",
+      Object.prototype.toString.call(obj2)==="[object Array]",
+      Object.prototype.toString.call(obj3)==="[object Array]"
+    )
+    //es5方法最好用以及常用
+    console.log(
+      Array.isArray(obj1),
+      Array.isArray(obj2),
+      Array.isArray(obj3)
+    )
+  </script>
+</body>
+</html>

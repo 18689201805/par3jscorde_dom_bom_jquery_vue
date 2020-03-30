@@ -1,0 +1,26 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>navigator对象常用属性</title>
+<meta charset="utf-8" />
+
+</head>
+<body>
+<script>
+console.log(navigator.plugins);
+//想判断当前浏览器是否安装PDF插件
+if(navigator.plugins["Chrome PDF Viewer"]!==undefined){
+  document.write(`<h1>已安装PDF插件，可以浏览PDF电子书</h1>`)
+}else{
+  document.write(`<h1>未安装PDF插件，<a href="javascript:;">点此下载安装</a></h1>`)
+}
+//想判断当前浏览器是否安装Flash插件
+if(navigator.plugins["Shockwave Flash"]!==undefined){
+  document.write(`<h1>已安装Flash插件，可以播放Flash动画</h1>`)
+}else{
+  document.write(`<h1>未安装Flash插件，<a href="javascript:;">点此下载安装</a></h1>`)
+}
+document.write(`<h1>${navigator.userAgent}</h1>`)
+</script>
+</body>
+</html>

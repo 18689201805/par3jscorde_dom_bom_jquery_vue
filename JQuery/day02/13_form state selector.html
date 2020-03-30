@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>.....</title>
+  <meta charset="utf-8"/>
+  <style>
+	</style>
+	<script src="day02/js/jquery-1.11.3.js"></script>
+ </head>
+ <body>
+	<form>
+		用户名:<input ></br>
+		密码:<input type="password" ></br>
+		<input type="checkbox">我同意本站的使用条款<br>
+		<input type="submit" value="提交注册信息" 	/>
+	</form>
+ </body>
+ <script>
+	 //查找触发的元素
+	 //var type=$(":checkbox")
+	 //console.log(type)
+	 $(":checkbox")
+	 //绑定事件处理函数
+	 .click(function(){
+			//查找修改的元素
+			var $other=$(":input:not(:checkbox)")
+			//修改元素
+			// if($(this).prop("checked")==true){
+			// 	$other.prop("disabled",true)
+			// }else{
+			// 	$other.prop("disabled",false)
+			// }
+			// $(this).prop("checked")?$other.prop("disabled",true):$other.prop("disabled",false)
+			 $other.prop("disabled",!$(this).prop("checked"))
+			// $other.prop("disabled",!$(this).prop("checked"))
+	 })
+ </script>
+</html>
